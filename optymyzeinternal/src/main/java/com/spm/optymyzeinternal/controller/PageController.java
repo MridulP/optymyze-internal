@@ -11,7 +11,35 @@ public class PageController {
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting","Welcome to Spring MVC");
+		mv.addObject("title","home");
+		mv.addObject("userClickHome",true);
+		return mv;
+	}
+	
+	@RequestMapping(value= {"/tab1"})
+	public ModelAndView tabone() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","Tab1");
+		mv.addObject("userClicktab1",true);
+		return mv;
+	}
+	
+	@RequestMapping(value= {"/tab2"})
+	public ModelAndView tabtwo() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","Tab2");
+		mv.addObject("userClicktab2",true);
+		return mv;
+	}
+	
+	@RequestMapping(value= {"/tab3"})
+	public ModelAndView tabthree() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","Tab3");
+		mv.addObject("userClicktab3",true);
 		return mv;
 	}
 	

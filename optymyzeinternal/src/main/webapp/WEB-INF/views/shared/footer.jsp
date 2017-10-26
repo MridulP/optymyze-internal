@@ -1,11 +1,11 @@
-  <div class="container">
+  <div class="container footer">
 
         <hr>
 
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Optymyze.com - Designed by <a href="google.com">Mk</a>
+                    <p>Copyright &copy; Optymyze.com 2017
                     </p>
                 </div>
             </div>
