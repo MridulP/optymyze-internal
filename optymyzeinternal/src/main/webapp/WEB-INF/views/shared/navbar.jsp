@@ -13,15 +13,24 @@
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		<form class="navbar-form navbar-right">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+		
+		
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav navbar-right">
 				<li id="tab1">
-						<a href="${contextRoot}/tab1">Tab1</a></li>
+						<a href="${contextRoot}/tab1">Link1</a></li>
 				<li id="tab2">
-						<a href="${contextRoot}tab2">Tab2</a></li>
+						<a href="${contextRoot}tab2">Link2</a></li>
 				<li id="tab3">
-						<a href="${contextRoot}/tab3">Tab3</a></li>
+						<a href="${contextRoot}/tab3">Link3</a></li>
 			</ul>
+			
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>

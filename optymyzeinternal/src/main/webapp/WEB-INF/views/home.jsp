@@ -5,9 +5,9 @@
             <div class="col-md-3">
                 <p class="lead">Task to Execute</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Concurrent User Session</a>
-                    <a href="#" class="list-group-item">Report Schedule</a>
-                    <a href="#" class="list-group-item">Alert Management</a>
+                    <a href="#" onclick="notify(this)" class="list-group-item">Concurrent User Session</a>
+                    <a href="#" onclick="notify(this)" class="list-group-item">Report Schedule</a>
+                    <a href="#" onclick="notify(this)" class="list-group-item">Alert Management</a>
                 </div>
             </div>
 

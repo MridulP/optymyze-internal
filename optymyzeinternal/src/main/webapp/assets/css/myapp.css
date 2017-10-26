@@ -73,3 +73,14 @@ footer {
 	bottom:15px;
 	height: 60px;
 }
+
+.navbar-nav > li {
+  
+
+  margin-right:10px
+}
+
+.form-group {
+	
+	 margin-left:40px
+}

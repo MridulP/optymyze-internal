@@ -56,6 +56,8 @@
 			<c:if test="${userClickHome == true }">
 				<%@include file="home.jsp"%>
 			</c:if>
+			
+			
 
 			<!-- Load only when user clicks about -->
 			<c:if test="${userClicktab1 == true }">
