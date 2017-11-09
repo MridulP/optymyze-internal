@@ -2,7 +2,7 @@ $(function() {
 		// solving the active menu problem
 		switch(menu) {
 		
-		case 'tab1' :
+		case 'Tab1' :
 			$('#tab1').addClass('active');
 			break;
 		case 'Tab2' :
@@ -16,8 +16,5 @@ $(function() {
 			break;	
 		
 		}
-	
-	
-	
 	
 });

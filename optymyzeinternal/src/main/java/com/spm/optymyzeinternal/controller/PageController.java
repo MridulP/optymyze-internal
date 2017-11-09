@@ -2,7 +2,10 @@ package com.spm.optymyzeinternal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.spm.optymyzeinternal.service.RunBatch;
 
 @Controller
 public class PageController {
@@ -41,6 +44,14 @@ public class PageController {
 		mv.addObject("title","Tab3");
 		mv.addObject("userClicktab3",true);
 		return mv;
+	}
+	
+	@RequestMapping(value= {"/runBatch"}, method=RequestMethod.GET)
+	public void TestResult() {
+	       RunBatch.runBatchScript();
+	   	     
+	
+	
 	}
 	
 }
