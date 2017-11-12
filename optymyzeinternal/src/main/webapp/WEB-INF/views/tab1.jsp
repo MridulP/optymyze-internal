@@ -5,23 +5,26 @@
 	<div class="jumbotron">
         <h2>Perl Script Input:</h2>
         <br>
-       <!--  
+        
         <form id="InputForm">
           <div class="form-group">
             <label for="ProjInput">Project Name</label>
             <select class="form-control" id="ProjInput"  placeholder="Select Project">
-            <option value="Low">CharterComm_snd</option>
+            <option value="Low">Select Project</option>
+             <option value="Low">DESJARDINS_SND2_SPM</option>
             </select> 
           
           </div>
           <div class="form-group">
             <label for="dbInput">Database Server </label> 
              <select class="form-control" id="idbInput">
-              <option value="db1">d34401-b0ca.ca-aws.optymyze.net</option>
-              <option value="db2">v-263-op-db3.synprod.net</option>
-              <option value="db3">v-supp-oi-db2.syntest.net</option>
+              <option value="db1">Select Database</option>
+              <option value="db2">d34401-b0ca.ca-aws.optymyze.net</option>
+              
             </select> 
           </div>
+          <br>
+          <!-- 
           <div class="form-group">
             <label for="paramone">Parameter 1</label>
             <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter Parameter 1 ...">
@@ -31,14 +34,16 @@
             <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter Parameter 2 ...">
           </div>
            
+          
           <table>
         <tr> <td>User Name: </td> <td><input type="text" name="userName" value="" placeholder="User Name"></input></td> <br>
          <td>User Password: </td> <td><input type="text" name="userPassword" value="" placeholder="User Password"></input></td> 
         <tr><td><input type="submit"></input></td> </tr>
-    </table>
+         
+    </table> -->
 </body>
 </html>
-          --> 
+           
         
           
             <div class="input-group">
@@ -64,9 +69,17 @@
         </form>
         --> 
           
-          <form action="${pageContext.request.contextPath}/runBatch.java" method="get">
-          <input type="submit" name="button"  class="btn btn-primary"  value="Run Script" />
+          <form action="${pageContext.request.contextPath}/runBatch" method="get">
+          <input type="submit" name="button1"  class="btn btn-primary"  value="Run Script" />
 		  </form>     
+         <br>
+         <form action="${pageContext.request.contextPath}/createBatch" method="get">
+          <input type="submit" name="button2"  class="btn btn-primary"  value="Create Script" />
+		  </form>
+        
+       
+            
+        
         
         
       </div>

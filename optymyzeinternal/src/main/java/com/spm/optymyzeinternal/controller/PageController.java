@@ -2,6 +2,8 @@ package com.spm.optymyzeinternal.controller;
 
 
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,20 +50,34 @@ public class PageController {
 		return mv;
 	}
 	
-	
 	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.GET)
-	public void TestResult () {
-		
-		
+	public void actionRun () {
+			
 		//if (request.getParameter("button") !=null){
 		RunBatch run= new RunBatch();
 		try {
 			run.runScript();
-		} catch (InterruptedException e) {
+		} catch (RuntimeException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	  
-	}
+	}	
+
+	@RequestMapping(value= {"/createBatch"}, method= RequestMethod.GET)
+	public void actionCreate () {
+			
+		//if (request.getParameter("button") !=null){
+		RunBatch run= new RunBatch();
+		try {
+			run.createScript();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  
+	}	
+
+	
 	
 }
