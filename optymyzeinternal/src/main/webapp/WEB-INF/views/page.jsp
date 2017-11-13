@@ -70,6 +70,11 @@
 			<c:if test="${userClicktab3 == true }">
 				<%@include file="tab3.jsp"%>
 			</c:if>
+			
+					<c:if test="${button3 == true }">
+				<%@include file="runBatch.jsp"%>
+			</c:if>
+			
 
 		</div>
 
@@ -85,6 +90,7 @@
 
 		<!-- Self coded JavaScript -->
 		<script src="${js}/myapp.js"></script>
+		<script src="${js}/datepicker.js"></script>
 
 	</div>
 

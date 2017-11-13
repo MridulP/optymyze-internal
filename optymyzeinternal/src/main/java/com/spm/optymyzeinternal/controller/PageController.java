@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spm.optymyzeinternal.service.CreateBatch;
 import com.spm.optymyzeinternal.service.RunBatch;
 
 @Controller
@@ -51,24 +52,38 @@ public class PageController {
 	}
 	
 	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.GET)
-	public void actionRun () {
-			
-		//if (request.getParameter("button") !=null){
-		RunBatch run= new RunBatch();
+	public  ModelAndView actionRun () {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","runBatch");
+		mv.addObject("button3",true);
+		
+		CreateBatch run= new CreateBatch();
 		try {
-			run.runScript();
-		} catch (RuntimeException | InterruptedException e) {
+			run.createScript();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	  
+		
+		
+		//if (request.getParameter("button") !=null){
+		RunBatch run2= new RunBatch();
+		try {
+			run2.runScript();
+		} catch (RuntimeException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			
+		}
+		return mv;	
 	}	
-
+/*
 	@RequestMapping(value= {"/createBatch"}, method= RequestMethod.GET)
 	public void actionCreate () {
 			
 		//if (request.getParameter("button") !=null){
-		RunBatch run= new RunBatch();
+		CreateBatch run= new CreateBatch();
 		try {
 			run.createScript();
 		} catch (IOException e) {
@@ -77,7 +92,7 @@ public class PageController {
 		}
 	  
 	}	
-
+*/
 	
 	
 }
