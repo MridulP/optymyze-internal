@@ -48,12 +48,13 @@
 				
 				  
           			<label for="startDate">Start Date:</label>&nbsp
-				    <input type="text" name="startDate_picker" id="startDate_picker" placeholder="Select start date" required="required" class="datepicker">
-					<input type="hidden" name="startDate"  id="startDate" > &nbsp &nbsp &nbsp &nbsp
+				    <input type="text" name="startDate_picker" id="startDate_picker" placeholder="Select start date" required="required"  class="datepicker">
+					 &nbsp &nbsp &nbsp &nbsp
 				     
-				     <label for="startDate">End Date:</label> &nbsp
+				     <label for="endDate">End Date:</label> &nbsp
 				    <input type="text" name="endDate_picker" id="endDate_picker" placeholder="Select end date" required="required" class="datepicker">
-					<input type="hidden" name="endDate"  id="endDate" >
+					
+					<!-- <input type="hidden" name="endDate"  id="endDate" >  -->
 					
 					<br>
 					<br>
@@ -66,8 +67,8 @@
 		<script>
 $(document).ready(function() {
     $("#endDate_picker").datepicker({
-        "altField2":"endDate",
-        "dateFormat":"dd M yy",
+        "altField2":"endDate_picker",
+        "dateFormat":"mm/dd/yy",
         "altFormat":"YY-m-dd",
         "changeMonth":true,
         "changeYear":true
@@ -81,8 +82,8 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $("#startDate_picker").datepicker({
-        "altField":"startDate",
-        "dateFormat":"dd M yy",
+        "altField":"startDate_picker",
+        "dateFormat":"mm/dd/yy",
         "altFormat":"YY-m-dd",
         "changeMonth":true,
         "changeYear":true

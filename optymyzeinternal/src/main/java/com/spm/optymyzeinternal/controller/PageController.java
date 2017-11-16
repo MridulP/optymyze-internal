@@ -3,6 +3,7 @@ package com.spm.optymyzeinternal.controller;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -58,8 +59,8 @@ public class PageController {
 																		@RequestParam("dbInput") String dbInput,
 																		@RequestParam("userid") String userid,
 																		@RequestParam("password") String password,
-																		@RequestParam("startDate") String startDate,
-																		@RequestParam("endDate") String endDate,
+																		@RequestParam("startDate_picker") String startDate_picker,
+																		@RequestParam("endDate_picker") String endDate_picker,
 																		Map<String,Object> map) {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","runBatch");
@@ -68,7 +69,7 @@ public class PageController {
 	// Call method to create batch file
 		CreateBatch run= new CreateBatch();
 		try {
-			run.createScript(projInput,dbInput,userid,password,startDate,endDate);
+			run.createScript(projInput,dbInput,userid,password,startDate_picker,endDate_picker);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

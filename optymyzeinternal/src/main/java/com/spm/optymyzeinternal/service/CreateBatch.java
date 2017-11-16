@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,7 @@ public class CreateBatch {
 
 	
 	@Autowired
-	public void createScript(String projInput, String dbInput, String userid, String password, String startDate, String endDate) throws FileNotFoundException{
+	public void createScript(String projInput, String dbInput, String userid, String password, String startDate_picker, String endDate_picker) throws FileNotFoundException{
 	
 		
 		
@@ -30,9 +31,9 @@ public class CreateBatch {
 			dos.writeBytes(" "+projInput);
 			dos.writeBytes(" pqr");
 			dos.writeBytes(" -s");
-			dos.writeBytes(" "+startDate);
+			dos.writeBytes(" "+startDate_picker);
 			dos.writeBytes(" -e");
-			dos.writeBytes(" "+endDate);
+			dos.writeBytes(" "+endDate_picker);
 			dos.close();
 			
 	} catch (IOException e) {
