@@ -3,10 +3,12 @@ package com.spm.optymyzeinternal.controller;
 
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spm.optymyzeinternal.service.CreateBatch;
@@ -52,30 +54,37 @@ public class PageController {
 	}
 	
 	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.GET)
-	public  ModelAndView actionRun () {
+	public  ModelAndView actionRun (@RequestParam("projInput") String projInput,
+																		@RequestParam("dbInput") String dbInput,
+																		@RequestParam("userid") String userid,
+																		@RequestParam("password") String password,
+																		@RequestParam("startDate") String startDate,
+																		@RequestParam("endDate") String endDate,
+																		Map<String,Object> map) {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","runBatch");
 		mv.addObject("button3",true);
 		
+	// Call method to create batch file
 		CreateBatch run= new CreateBatch();
 		try {
-			run.createScript();
+			run.createScript(projInput,dbInput,userid,password,startDate,endDate);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		//if (request.getParameter("button") !=null){
+	// Call method to run batch file	
 		RunBatch run2= new RunBatch();
 		try {
 			run2.runScript();
 		} catch (RuntimeException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		
 			
-			
-		}
+		} 
 		return mv;	
 	}	
 /*

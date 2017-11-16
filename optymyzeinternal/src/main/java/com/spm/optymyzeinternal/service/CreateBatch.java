@@ -7,11 +7,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public class CreateBatch {
 
+	
 	@Autowired
-	public void createScript() throws FileNotFoundException{
+	public void createScript(String projInput, String dbInput, String userid, String password, String startDate, String endDate) throws FileNotFoundException{
+	
+		
 		
 		File file = new File ("\\c:\\perl\\test.bat");
 		FileOutputStream fos  = new FileOutputStream(file);
@@ -19,16 +23,16 @@ public class CreateBatch {
 		try {
 			dos.writeBytes("perl c:\\perl\\");
 			dos.writeBytes("ReportUserSessionsOZ.pl");
-			dos.writeBytes(" d34401-b0ca.ca-aws.optymyze.net");
-			dos.writeBytes(" RO_12E84BAA");
-			dos.writeBytes(" S5HTUew33owH");
+			dos.writeBytes(" "+ dbInput);
+			dos.writeBytes(" "+userid);
+			dos.writeBytes(" "+password);
 			dos.writeBytes(" -n");
-			dos.writeBytes(" DESJARDINS_SND2_SPM");
+			dos.writeBytes(" "+projInput);
 			dos.writeBytes(" pqr");
 			dos.writeBytes(" -s");
-			dos.writeBytes(" 10/01/2017");
+			dos.writeBytes(" "+startDate);
 			dos.writeBytes(" -e");
-			dos.writeBytes(" 10/05/2017");
+			dos.writeBytes(" "+endDate);
 			dos.close();
 			
 	} catch (IOException e) {

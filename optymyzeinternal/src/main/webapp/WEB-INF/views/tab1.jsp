@@ -1,4 +1,7 @@
-<script type="text/javascript" src="//resources/js/datepicker.js"> </script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+
 
 <div class="container">
 
@@ -8,100 +11,85 @@
 			<h2>Perl Script Input:</h2>
 			<br>
 
-			<form id="InputForm">
-				<div class="form-group">
-					<label for="ProjInput">Project Name</label> <select
-						class="form-control" id="ProjInput" placeholder="Select Project">
-						<option value="Low">Select Project</option>
-						<option value="Low">DESJARDINS_SND2_SPM</option>
-					</select>
-
-				</div>
-				<div class="form-group">
-					<label for="dbInput">Database Server </label> <select
-						class="form-control" id="dbInput">
-						<option value="db1">Select Database</option>
-						<option value="db2">d34401-b0ca.ca-aws.optymyze.net</option>
-
-					</select>
-				</div>
-				<br>
-				<!-- 
-          <div class="form-group">
-            <label for="paramone">Parameter 1</label>
-            <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter Parameter 1 ...">
-          </div>
-           <div class="form-group">
-            <label for="param2">Parameter 2</label>
-            <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter Parameter 2 ...">
-          </div>
-           
-          
-          <table>
-        <tr> <td>User Name: </td> <td><input type="text" name="userName" value="" placeholder="User Name"></input></td> <br>
-         <td>User Password: </td> <td><input type="text" name="userPassword" value="" placeholder="User Password"></input></td> 
-        <tr><td><input type="submit"></input></td> </tr>
-         
-    </table> -->
-
-				</body>
-				</html>
-
+			<form action="${pageContext.request.contextPath}/runBatch" method="get">
+				
 				<div class="input-group">
-
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-user"></i></span> <input id="userid"
-						type="text" class="form-control" name="user"
-						placeholder="RO User ID..">
+				<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cloud"></i></span>	
+					<input type="text" name="projInput" class="form-control" placeholder="Enter Project" />
+				</div>
+				 
+				  <br>
+				<div class="input-group">
+				<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cd"></i></span>		
+						<input type="text" name="dbInput" class="form-control" placeholder="Enter Database" />
 				</div>
 				<br>
-
-				<div class="input-group">
-
+				
+				
+				
+					<div class="input-group">
 					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-lock"></i></span> <input id="password"
-						type="password" class="form-control" name="password"
-						placeholder="Password">
-				</div>	
-
-				<br>
-				<form action="${pageContext.request.contextPath}/runBatch"
-					method="get">
-					<input type="submit" name="button3" class="btn btn-primary"
-						value="Execute Script" />
-				</form>
+						class="glyphicon glyphicon-user"></i></span>	
+						<input type="text" name="userid" class="form-control" placeholder="RO User.." />
+				</div>
+				
 				<br>
 
+				 <div class="input-group">	
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span>	
+						<input type="text" name="password" class="form-control" placeholder="Password.." />
+				</div>
 
+				<br>
+				<br>
+				
+				  
+          			<label for="startDate">Start Date:</label>&nbsp
+				    <input type="text" name="startDate_picker" id="startDate_picker" placeholder="Select start date" required="required" class="datepicker">
+					<input type="hidden" name="startDate"  id="startDate" > &nbsp &nbsp &nbsp &nbsp
+				     
+				     <label for="startDate">End Date:</label> &nbsp
+				    <input type="text" name="endDate_picker" id="endDate_picker" placeholder="Select end date" required="required" class="datepicker">
+					<input type="hidden" name="endDate"  id="endDate" >
+					
+					<br>
+					<br>
+				    <br>
+					<input type="submit" name="button3" class="btn btn-primary" value="Run Script" />
+					
+					</div>
+				
+				
+		<script>
+$(document).ready(function() {
+    $("#endDate_picker").datepicker({
+        "altField2":"endDate",
+        "dateFormat":"dd M yy",
+        "altFormat":"YY-m-dd",
+        "changeMonth":true,
+        "changeYear":true
+    });
+});
 
+</script>		
+									
+</div>	
 
-<div class="container">
-    <div class='col-md-5'>
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker6'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class='col-md-5'>
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+$(document).ready(function() {
+    $("#startDate_picker").datepicker({
+        "altField":"startDate",
+        "dateFormat":"dd M yy",
+        "altFormat":"YY-m-dd",
+        "changeMonth":true,
+        "changeYear":true
+    });
+});
 
-
-
-
-
+</script>				
 
 
 		</div>

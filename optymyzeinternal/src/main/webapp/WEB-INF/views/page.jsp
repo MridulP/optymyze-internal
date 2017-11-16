@@ -35,6 +35,7 @@
 
 <!-- Custom CSS here -->
 <link href="${css}/myapp.css" rel="stylesheet">
+<link href="${css}/jquery-ui.css" rel="stylesheet">
 
 </head>
 
@@ -90,7 +91,8 @@
 
 		<!-- Self coded JavaScript -->
 		<script src="${js}/myapp.js"></script>
-		<script src="${js}/datepicker.js"></script>
+	<script src="${js}/jquery-ui.js"></script>
+	
 
 	</div>
 
