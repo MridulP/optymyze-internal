@@ -13,21 +13,43 @@
 
 			<form action="${pageContext.request.contextPath}/runBatch" method="get">
 				
-				<div class="input-group">
+				 <div class="input-group">
 				<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cloud"></i></span>	
 					<input type="text" name="projInput" class="form-control" placeholder="Enter Project" />
-				</div>
+				</div> 
+				 
+			<!--	 <div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cloud"></i></span>		
+				      <select
+						class="form-control" name="projInput"  id="projInput" placeholder="Enter Project">
+						<option value="Low">Select Project</option>
+						<option value="Low">DESJARDINS_SND2_SPM</option>
+					</select>
+					</div> -->
 				 
 				  <br>
-				<div class="input-group">
+				  
+				  <div class="input-group">
 				<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cd"></i></span>		
 						<input type="text" name="dbInput" class="form-control" placeholder="Enter Database" />
-				</div>
+				</div> 
+				
+				
+				
+			<!--		<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cd"></i></span>		
+				      <select
+						class="form-control" name="dbinput"  id="dbInput" placeholder="Enter Database">
+						<option value="Low">Select Database</option>
+						<option value="Low">DESJARDINS_SND2_SPM</option>
+					</select>
+					</div> -->
+				
 				<br>
-				
-				
 				
 					<div class="input-group">
 					<span class="input-group-addon"><i
@@ -39,7 +61,7 @@
 
 				 <div class="input-group">	
 					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-user"></i></span>	
+						class="glyphicon glyphicon-lock"></i></span>	
 						<input type="text" name="password" class="form-control" placeholder="Password.." />
 				</div>
 
