@@ -5,10 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestParam;
 
 public class CreateBatch {
 
@@ -18,23 +15,25 @@ public class CreateBatch {
 	
 		
 		
-		File file = new File ("\\c:\\perl\\test.bat");
+		File file = new File ("\\c:\\Perl\\test.bat");
 		FileOutputStream fos  = new FileOutputStream(file);
 		DataOutputStream dos = new DataOutputStream(fos);
 		try {
-			dos.writeBytes("perl c:\\perl\\");
+			dos.writeBytes("perl c:\\Perl\\");
 			dos.writeBytes("ReportUserSessionsOZ.pl");
 			dos.writeBytes(" "+ dbInput);
 			dos.writeBytes(" "+userid);
 			dos.writeBytes(" "+password);
 			dos.writeBytes(" -n");
 			dos.writeBytes(" "+projInput);
-			dos.writeBytes(" pqr");
+			dos.writeBytes(" abc");
 			dos.writeBytes(" -s");
 			dos.writeBytes(" "+startDate_picker);
 			dos.writeBytes(" -e");
 			dos.writeBytes(" "+endDate_picker);
+			
 			dos.close();
+			fos.close();
 			
 	} catch (IOException e) {
 		// TODO Auto-generated catch block

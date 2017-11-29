@@ -24,11 +24,11 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="tab1">
-						<a href="${contextRoot}/tab1">PerlRun</a></li>
+						<a href="${contextRoot}/tab1">Perl Run</a></li>
 				<li id="tab2">
-						<a href="${contextRoot}/tab2">Link2</a></li>
+						<a href="${contextRoot}/tab2">Reporting</a></li>
 				<li id="tab3">
-						<a href="${contextRoot}/tab3">Link3</a></li>
+						<a href="${contextRoot}/tab3">Notification</a></li>
 			</ul>
 			
 		</div>

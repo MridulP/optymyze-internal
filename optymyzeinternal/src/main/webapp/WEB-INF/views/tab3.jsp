@@ -1,9 +1,9 @@
 <div class="container">
 	
 	<div class="row">
-	<h1>Function to be implemented</h1>
+	<h1>Alert Management</h1>
 		<hr/>
-		<p>  In progress... </p>
+		<p> To be implemented </p>
 		
 		</div>
 	

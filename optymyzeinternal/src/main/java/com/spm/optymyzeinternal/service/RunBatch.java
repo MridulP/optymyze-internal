@@ -1,5 +1,7 @@
 package com.spm.optymyzeinternal.service;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +14,34 @@ public void runScript() throws InterruptedException{
 		
 	System.out.println("before batch execution");
 		
-		try {
-			String  [] command = { "cmd.exe", "/C", "Start", "C:\\perl\\test.bat" };
+	ProcessBuilder pb = new ProcessBuilder(Arrays.asList(new String[] {"cmd.exe", "/C", "Start", "C:\\Perl\\test.bat"}));
+	pb.redirectErrorStream(true);
+	try {
+	    Process proc = pb.start();
+	    proc.waitFor();
+	    proc.destroy();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	
+	
+	
+	/*try {
+			String  [] command = { "cmd.exe", "/C", "Start", "C:\\Perl\\test.bat" };
 			Runtime r = Runtime.getRuntime();
             Process p = r.exec(command);
             p.waitFor();
+            p.destroy();
+           
 
             } catch (Exception e) 
             {
+    */        
 
             System.out.println("Execution error");} 
 		    System.out.println("after batch execution");
+		    System.gc();
 					
 	}
-
-
 
 
 

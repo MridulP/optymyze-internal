@@ -11,12 +11,12 @@
 			<h2>Perl Script Input:</h2>
 			<br>
 
-			<form action="${pageContext.request.contextPath}/runBatch" method="get">
+			<form action="${pageContext.request.contextPath}/createBatch" method="post">
 				
 				 <div class="input-group">
 				<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cloud"></i></span>	
-					<input type="text" name="projInput" class="form-control" placeholder="Enter Project" />
+					<input type="text" name="projInput" class="form-control" placeholder="Enter Project" required="required" />
 				</div> 
 				 
 			<!--	 <div class="input-group">
@@ -34,7 +34,7 @@
 				  <div class="input-group">
 				<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cd"></i></span>		
-						<input type="text" name="dbInput" class="form-control" placeholder="Enter Database" />
+						<input type="text" name="dbInput" class="form-control" placeholder="Enter Database" required="required" />
 				</div> 
 				
 				
@@ -54,7 +54,7 @@
 					<div class="input-group">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-user"></i></span>	
-						<input type="text" name="userid" class="form-control" placeholder="RO User.." />
+						<input type="text" name="userid" class="form-control" placeholder="RO User.." required="required" />
 				</div>
 				
 				<br>
@@ -62,7 +62,7 @@
 				 <div class="input-group">	
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-lock"></i></span>	
-						<input type="text" name="password" class="form-control" placeholder="Password.." />
+						<input type="text" name="password" class="form-control" placeholder="Password.." required="required" />
 				</div>
 
 				<br>
@@ -74,16 +74,28 @@
 					 &nbsp &nbsp &nbsp &nbsp
 				     
 				     <label for="endDate">End Date:</label> &nbsp
-				    <input type="text" name="endDate_picker" id="endDate_picker" placeholder="Select end date" required="required" class="datepicker">
+				    <input type="text" name="endDate_picker" id="endDate_picker" placeholder="Select end date" required="required" class="datepicker"> 
 					
-					<!-- <input type="hidden" name="endDate"  id="endDate" >  -->
+					<!-- <input type="hidden" name="endDate"  id="endDate" > -->
 					
 					<br>
 					<br>
 				    <br>
 					<input type="submit" name="button3" class="btn btn-primary" value="Run Script" />
+					</form>
+					<br>
+					
+					<!--  
+					<br>
+				    <br>
+				    <form action="${pageContext.request.contextPath}/runBatch" method="post">
+					<input type="submit" name="button4" class="btn btn-primary" value="Run Script" />
 					
 					</div>
+					
+					-->
+					
+				
 				
 				
 		<script>
@@ -114,6 +126,7 @@ $(document).ready(function() {
 
 </script>				
 
+</form>
 
 		</div>
 		<div class="row">

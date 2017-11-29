@@ -6,8 +6,8 @@
                 <p class="lead">Task to Execute</p>
                 <div class="list-group">
                     <a href="tab1"  class="list-group-item">Concurrent User Session</a>
-                    <a href="#"  class="list-group-item">Report Schedule</a>
-                    <a href="#"  class="list-group-item">Alert Management</a>
+                    <a href="tab2"  class="list-group-item">Report Schedule</a>
+                    <a href="tab3"  class="list-group-item">Alert Management</a>
                 </div>
             </div>
 

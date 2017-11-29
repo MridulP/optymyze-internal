@@ -1,7 +1,5 @@
 package com.spm.optymyzeinternal.controller;
 
-
-
 import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spm.optymyzeinternal.service.CallBatch;
 import com.spm.optymyzeinternal.service.CreateBatch;
 import com.spm.optymyzeinternal.service.RunBatch;
 
@@ -37,12 +36,14 @@ public class PageController {
 	}
 	
 	@RequestMapping(value= {"/tab2"})
-	public ModelAndView tabtwo() {
+	public ModelAndView tabtwo(){
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","Tab2");
 		mv.addObject("userClicktab2",true);
-		return mv;
+		
+		
+		return mv; 
 	}
 	
 	@RequestMapping(value= {"/tab3"})
@@ -54,19 +55,21 @@ public class PageController {
 		return mv;
 	}
 	
-	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.GET)
-	public  ModelAndView actionRun (@RequestParam("projInput") String projInput,
+	
+	@RequestMapping(value= {"/createBatch"}, method= RequestMethod.POST)
+	public  void actionRun (@RequestParam("projInput") String projInput,
 																		@RequestParam("dbInput") String dbInput,
 																		@RequestParam("userid") String userid,
 																		@RequestParam("password") String password,
 																		@RequestParam("startDate_picker") String startDate_picker,
 																		@RequestParam("endDate_picker") String endDate_picker,
 																		Map<String,Object> map) {
+		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","runBatch");
 		mv.addObject("button3",true);
 		
-	// Call method to create batch file
+	//Call method to create batch file
 		CreateBatch run= new CreateBatch();
 		try {
 			run.createScript(projInput,dbInput,userid,password,startDate_picker,endDate_picker);
@@ -75,7 +78,7 @@ public class PageController {
 			e.printStackTrace();
 		}
 		
-		
+	
 	// Call method to run batch file	
 		RunBatch run2= new RunBatch();
 		try {
@@ -86,23 +89,30 @@ public class PageController {
 		
 			
 		} 
-		return mv;	
+		 
 	}	
-/*
-	@RequestMapping(value= {"/createBatch"}, method= RequestMethod.GET)
+
+	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.POST)
 	public void actionCreate () {
-			
-		//if (request.getParameter("button") !=null){
-		CreateBatch run= new CreateBatch();
+		
+		ModelAndView mv = new ModelAndView("page");
+				mv.addObject("title","runBatch");
+				mv.addObject("button7",true);
+		
+		RunBatch r2= new RunBatch();
 		try {
-			run.createScript();
-		} catch (IOException e) {
+			r2.runScript();
+		} catch (RuntimeException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	  
+		
+			
+		} 
+		
 	}	
-*/
+
+		
+		
+	}
 	
-	
-}
+
