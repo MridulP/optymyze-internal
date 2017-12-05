@@ -63,6 +63,16 @@ public class PageController {
 		return mv;
 	}
 	
+	@RequestMapping(value= {"/charDetect"})
+	public ModelAndView tabfour() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title","charDetect");
+		mv.addObject("userClicktab4",true);
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.POST)
 	public  ModelAndView actionRun (@RequestParam("projInput") String projInput,
@@ -101,7 +111,7 @@ public class PageController {
 	public void downloadResource (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String filePath = "c:\\eclipse\\";
-		String fileName = "DESJARDINS_SND2_SPM_report";
+		String fileName = "Session_report";
 		
 		
 		response.setContentType("text/html");		
@@ -113,8 +123,8 @@ public class PageController {
             	int i;
         		while ((i = fileInputStream.read()) != -1) {
         		out.write(i);
-            } fileInputStream.close();
-    		out.close(); }
+            }	fileInputStream.close();
+    			out.close(); }
             catch (IOException ex) {
                 ex.printStackTrace();
             }

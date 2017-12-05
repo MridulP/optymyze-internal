@@ -76,6 +76,12 @@
 				<%@include file="runBatch.jsp"%>
 			</c:if>
 			
+				<c:if test="${userClicktab4 == true }">
+				<%@include file="charDetect.jsp"%>
+			</c:if>
+			
+			
+			
 
 		</div>
 

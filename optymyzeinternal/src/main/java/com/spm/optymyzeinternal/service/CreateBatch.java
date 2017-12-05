@@ -28,7 +28,7 @@ public class CreateBatch {
 			dos.writeBytes(" "+password);
 			dos.writeBytes(" -n");
 			dos.writeBytes(" "+projInput);					
-			dos.writeBytes(" " +projInput+"_report");
+			dos.writeBytes(" Session_report");
 					
 			dos.writeBytes(" -s");
 			dos.writeBytes(" "+startDate_picker);

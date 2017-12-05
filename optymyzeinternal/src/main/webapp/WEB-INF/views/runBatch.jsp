@@ -10,17 +10,12 @@
 
 		<div class="jumbotron">
 			<h2>Script execution completed successfully:</h2>
-			<br>
-
-			
+			<br>					
 				
-			
-					
-					
 					<br>
 					
 				    
-				    <form action="${pageContext.request.contextPath}/download" method="get">
+				    <form action="${pageContext.request.contextPath}/download">
 					<input type="submit" name="button7" class="btn btn-primary" value="Download File" />
 					
 					

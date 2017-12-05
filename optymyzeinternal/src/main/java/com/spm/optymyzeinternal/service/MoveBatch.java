@@ -6,7 +6,7 @@ public class MoveBatch {
 
 	public void moveFile(){
 		
-		File afile=new File ("C:\\eclipse\\DESJARDINS_SND2_SPM_report");
+		File afile=new File ("C:\\eclipse\\Session_report");
 		
 		try {
 		
