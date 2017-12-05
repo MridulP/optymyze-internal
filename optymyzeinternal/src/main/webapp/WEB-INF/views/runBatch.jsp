@@ -15,8 +15,8 @@
 					<br>
 					
 				    
-				    <form action="${pageContext.request.contextPath}/download">
-					<input type="submit" name="button7" class="btn btn-primary" value="Download File" />
+				    <form action="${pageContext.request.contextPath}/download" method=GET>
+					<input type="submit" name="button10" class="btn btn-primary" value="Download File" />
 					
 					
 					</form>

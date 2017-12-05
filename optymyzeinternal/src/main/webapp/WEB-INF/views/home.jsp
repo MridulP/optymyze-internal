@@ -5,10 +5,10 @@
             <div class="col-md-3">
                 <p class="lead">Task to Execute</p>
                 <div class="list-group">
-                    <a href="tab1"  class="list-group-item">Concurrent User Session</a>
+                    <a href="perlrun"  class="list-group-item">Concurrent User Session</a>
                     <a href="charDetect"  class="list-group-item">Detect Character Encoding</a>
-                    <a href="tab2"  class="list-group-item">Report Schedule</a>
-                    <a href="tab3"  class="list-group-item">Alert Management</a>
+                    <a href="reporting"  class="list-group-item">Report Schedule</a>
+                    <a href="notification"  class="list-group-item">Alert Management</a>
                 </div>
             </div>
 

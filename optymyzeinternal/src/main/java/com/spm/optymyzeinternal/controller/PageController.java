@@ -34,31 +34,31 @@ public class PageController {
 		return mv;
 	}
 	
-	@RequestMapping(value= {"/tab1"})
+	@RequestMapping(value= {"/perlrun"})
 	public ModelAndView tabone() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Tab1");
+		mv.addObject("title","perlrun");
 		mv.addObject("userClicktab1",true);
 		return mv;
 	}
 	
-	@RequestMapping(value= {"/tab2"})
+	@RequestMapping(value= {"/reporting"})
 	public ModelAndView tabtwo(){
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Tab2");
+		mv.addObject("title","reporting");
 		mv.addObject("userClicktab2",true);
 		
 		
 		return mv; 
 	}
 	
-	@RequestMapping(value= {"/tab3"})
+	@RequestMapping(value= {"/notification"})
 	public ModelAndView tabthree() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Tab3");
+		mv.addObject("title","notification");
 		mv.addObject("userClicktab3",true);
 		return mv;
 	}
@@ -96,6 +96,7 @@ public class PageController {
 	
 	// Call method to run batch file	
 		RunBatch obj2=new RunBatch();
+		
 		obj2.runScript();	
 	
 	// Move Batch File
@@ -107,7 +108,7 @@ public class PageController {
 	}	
 
 	
-	@RequestMapping(value= {"/download"})
+	@RequestMapping(value= {"/download"},method= RequestMethod.GET)
 	public void downloadResource (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String filePath = "c:\\eclipse\\";

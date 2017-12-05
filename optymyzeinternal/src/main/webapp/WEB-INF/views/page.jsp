@@ -60,16 +60,17 @@
 						
 
 			<!-- Load only when user clicks about -->
+			
 			<c:if test="${userClicktab1 == true }">
-				<%@include file="tab1.jsp"%>
+				<%@include file="perlrun.jsp"%>
 			</c:if>
 
 			<c:if test="${userClicktab2 == true }">
-				<%@include file="tab2.jsp"%>
+				<%@include file="reporting.jsp"%>
 			</c:if>
 
 			<c:if test="${userClicktab3 == true }">
-				<%@include file="tab3.jsp"%>
+				<%@include file="notification.jsp"%>
 			</c:if>
 			
 					<c:if test="${button3 == true }">
