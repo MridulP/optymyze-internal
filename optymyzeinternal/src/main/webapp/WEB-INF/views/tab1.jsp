@@ -11,24 +11,14 @@
 			<h2>Perl Script Input:</h2>
 			<br>
 
-			<form action="${pageContext.request.contextPath}/createBatch" method="post">
+			<form action="${pageContext.request.contextPath}/runBatch" method="post">
 				
 				 <div class="input-group">
 				<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cloud"></i></span>	
 					<input type="text" name="projInput" class="form-control" placeholder="Enter Project" required="required" />
 				</div> 
-				 
-			<!--	 <div class="input-group">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-cloud"></i></span>		
-				      <select
-						class="form-control" name="projInput"  id="projInput" placeholder="Enter Project">
-						<option value="Low">Select Project</option>
-						<option value="Low">DESJARDINS_SND2_SPM</option>
-					</select>
-					</div> -->
-				 
+				 		 
 				  <br>
 				  
 				  <div class="input-group">
@@ -62,7 +52,7 @@
 				 <div class="input-group">	
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-lock"></i></span>	
-						<input type="text" name="password" class="form-control" placeholder="Password.." required="required" />
+						<input type="password" name="password" class="form-control" placeholder="Password.." required="required" />
 				</div>
 
 				<br>
@@ -76,7 +66,6 @@
 				     <label for="endDate">End Date:</label> &nbsp
 				    <input type="text" name="endDate_picker" id="endDate_picker" placeholder="Select end date" required="required" class="datepicker"> 
 					
-					<!-- <input type="hidden" name="endDate"  id="endDate" > -->
 					
 					<br>
 					<br>

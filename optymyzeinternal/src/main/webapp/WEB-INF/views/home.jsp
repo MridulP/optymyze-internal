@@ -24,19 +24,21 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                <!--http://placehold.it/800x300  -->
+                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
                                 </div>
                             </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <!-- "#carousel-example-generic" -->
+                            <a class="left carousel-control" href="#carousel-control left" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <a class="right carousel-control" href="#carousel-control right" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
@@ -48,7 +50,7 @@
                         <h4><a href="#">Feedback for improvement</a>
                         </h4>
                         <p>You can click below button to share with us.</p>
-                        <a class="btn btn-primary" target="_blank" href="https://usabilla.com/">Feedback</a>
+                        <a class="btn btn-primary" target="_blank" href="">Feedback</a>
                     </div>
 
                 </div>

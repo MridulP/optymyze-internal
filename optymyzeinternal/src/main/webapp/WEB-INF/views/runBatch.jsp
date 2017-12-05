@@ -1,21 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 
-
-<title>Insert title here</title>
 
 <div class="container">
-	
-	<div class="row">
-<h2> Script ran sucessfully..</h2>
-</div>
-</div>
-</head>
-<body>
 
-</body>
+	<div class="row">
+
+		<div class="jumbotron">
+			<h2>Script execution completed successfully:</h2>
+			<br>
+
+			
+				
+			
+					
+					
+					<br>
+					
+				    
+				    <form action="${pageContext.request.contextPath}/download" method="get">
+					<input type="submit" name="button7" class="btn btn-primary" value="Download File" />
+					
+					
+					</form>
+					<br>
+	
+				</div>
+
+
+</div>
+</div>
+
 </html>

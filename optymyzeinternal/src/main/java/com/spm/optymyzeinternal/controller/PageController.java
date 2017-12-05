@@ -1,8 +1,13 @@
 package com.spm.optymyzeinternal.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
+import java.io.PrintWriter;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spm.optymyzeinternal.service.CallBatch;
+
 import com.spm.optymyzeinternal.service.CreateBatch;
+import com.spm.optymyzeinternal.service.MoveBatch;
 import com.spm.optymyzeinternal.service.RunBatch;
 
 @Controller
 public class PageController {
+	
+	
 
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView index() {
@@ -56,63 +64,66 @@ public class PageController {
 	}
 	
 	
-	@RequestMapping(value= {"/createBatch"}, method= RequestMethod.POST)
-	public  void actionRun (@RequestParam("projInput") String projInput,
+	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.POST)
+	public  ModelAndView actionRun (@RequestParam("projInput") String projInput,
 																		@RequestParam("dbInput") String dbInput,
 																		@RequestParam("userid") String userid,
 																		@RequestParam("password") String password,
 																		@RequestParam("startDate_picker") String startDate_picker,
 																		@RequestParam("endDate_picker") String endDate_picker,
-																		Map<String,Object> map) {
+																		Map<String,Object> map) throws FileNotFoundException, InterruptedException {
+		
+		final String filePrefix = projInput;
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","runBatch");
 		mv.addObject("button3",true);
 		
 	//Call method to create batch file
-		CreateBatch run= new CreateBatch();
-		try {
-			run.createScript(projInput,dbInput,userid,password,startDate_picker,endDate_picker);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+		CreateBatch obj=new CreateBatch();
+		obj.createScript(projInput, dbInput, userid, password, startDate_picker, endDate_picker);		
 	
 	// Call method to run batch file	
-		RunBatch run2= new RunBatch();
-		try {
-			run2.runScript();
-		} catch (RuntimeException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		RunBatch obj2=new RunBatch();
+		obj2.runScript();	
+	
+	// Move Batch File
+	//	MoveBatch obj3=new MoveBatch();
+	//	obj3.moveFile();			
 		
-			
-		} 
-		 
-	}	
-
-	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.POST)
-	public void actionCreate () {
-		
-		ModelAndView mv = new ModelAndView("page");
-				mv.addObject("title","runBatch");
-				mv.addObject("button7",true);
-		
-		RunBatch r2= new RunBatch();
-		try {
-			r2.runScript();
-		} catch (RuntimeException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		
-			
-		} 
+		return mv;
 		
 	}	
 
+	
+	@RequestMapping(value= {"/download"})
+	public void downloadResource (HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		String filePath = "c:\\eclipse\\";
+		String fileName = "DESJARDINS_SND2_SPM_report";
 		
 		
+		response.setContentType("text/html");		
+		response.addHeader("Content-Disposition", "attachment; filename "+fileName); 
+		PrintWriter out = response.getWriter();
+		FileInputStream fileInputStream = new FileInputStream(filePath +fileName);   
+            try
+            {
+            	int i;
+        		while ((i = fileInputStream.read()) != -1) {
+        		out.write(i);
+            } fileInputStream.close();
+    		out.close(); }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+  
+            MoveBatch act = new MoveBatch();
+            act.moveFile();
+			
 	}
+	
+ }
 	
 
