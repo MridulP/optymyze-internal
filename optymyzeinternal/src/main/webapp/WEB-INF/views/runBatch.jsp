@@ -15,9 +15,31 @@
 					<br>
 					
 				    
-				    <form action="${pageContext.request.contextPath}/download" method=GET>
-					<input type="submit" name="button10" class="btn btn-primary" value="Download File" />
+				    <form action="${pageContext.request.contextPath}/download" id=frms>
+					<input type="submit" name="button10" id=button10 class="btn btn-primary" value="Download File" />
 					
+					
+					<script>
+					$('#frms').bind('submit', function(e) {
+						var button = $('#button10');
+
+						// Disable the submit button while evaluating if the form should be submitted
+						button.prop('disabled', true);
+
+						var valid = true;
+
+						// Do stuff (validations, etc) here and set
+						// "valid" to false if the validation fails
+
+						if (!valid) {
+							// Prevent form from submitting if validation failed
+							e.preventDefault();
+
+							// Reactivate the button if the form was not submitted
+							button.prop('disabled', false);
+						}
+					});
+				</script>
 					
 					</form>
 					<br>

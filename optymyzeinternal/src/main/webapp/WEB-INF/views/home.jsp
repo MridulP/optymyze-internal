@@ -5,7 +5,7 @@
             <div class="col-md-3">
                 <p class="lead">Task to Execute</p>
                 <div class="list-group">
-                    <a href="perlrun"  class="list-group-item">Concurrent User Session</a>
+                    <a href="perlrun"  class="list-group-item active" >Concurrent User Session</a>
                     <a href="charDetect"  class="list-group-item">Detect Character Encoding</a>
                     <a href="reporting"  class="list-group-item">Report Schedule</a>
                     <a href="notification"  class="list-group-item">Alert Management</a>
@@ -17,34 +17,38 @@
                 <div class="row carousel-holder">
 
                     <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <div class="carousel slide" id="myCarousel">
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div class="item active">
+                                <div class="item active" id="slide1">
                                 <!--http://placehold.it/800x300  -->
-                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
+                                    <img class="slide-image" src="${images}/image1.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
+                                    <img class="slide-image" src="${images}/image2.jpg"  alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300 " alt="">
+                                    <img class="slide-image" src="${images}/pic3.jpg" alt="">
                                 </div>
                             </div>
                             <!-- "#carousel-example-generic" -->
-                            <a class="left carousel-control" href="#carousel-control left" data-slide="prev">
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
-                            <a class="right carousel-control" href="#carousel-control right" data-slide="next">
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
                     </div>
-
+                    <script>
+                    $('.carousel').carousel({
+                    interval : 3000
+                     })
+                    </script>  
                 </div> 
 
                     <div class="col-sm-4 col-lg-4 col-md-4">

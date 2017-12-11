@@ -6,8 +6,8 @@
 	<packaging>war</packaging>
 	
 	
-	<version>0.0.1-SNAPSHOT</version>
-	<name>optymyzeinternal Maven Webapp</name>
+	<version>1.0</version>
+	<name>optymyzeinternal Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

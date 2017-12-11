@@ -38,7 +38,7 @@ public class PageController {
 	public ModelAndView tabone() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","perlrun");
+		mv.addObject("title","Perlrun");
 		mv.addObject("userClicktab1",true);
 		return mv;
 	}
@@ -47,7 +47,7 @@ public class PageController {
 	public ModelAndView tabtwo(){
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","reporting");
+		mv.addObject("title","Reporting");
 		mv.addObject("userClicktab2",true);
 		
 		
@@ -58,7 +58,7 @@ public class PageController {
 	public ModelAndView tabthree() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","notification");
+		mv.addObject("title","Notification");
 		mv.addObject("userClicktab3",true);
 		return mv;
 	}
@@ -108,11 +108,15 @@ public class PageController {
 	}	
 
 	
-	@RequestMapping(value= {"/download"},method= RequestMethod.GET)
+	@RequestMapping(value= {"/download"})
 	public void downloadResource (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String filePath = "c:\\eclipse\\";
-		String fileName = "Session_report";
+		//String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
+		
+		
+		
+		String fileName = "Session_report.html";
 		
 		
 		response.setContentType("text/html");		

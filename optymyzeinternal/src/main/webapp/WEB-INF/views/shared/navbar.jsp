@@ -8,8 +8,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${contextRoot}/home">Optymyze
-				Internal</a>
+			<a class="navbar-brand" href="${contextRoot}/home">Optymyze Internal</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,6 +23,8 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				
+				<li id="Perlrun">
+						<a href="${contextRoot}/perlrun">PerlRun</a></li>
 				<li id="Reporting">
 						<a href="${contextRoot}/reporting">Reporting</a></li>
 				<li id="Notification">
