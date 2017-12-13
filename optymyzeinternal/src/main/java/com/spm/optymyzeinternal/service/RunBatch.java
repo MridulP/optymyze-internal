@@ -35,7 +35,7 @@ public void runScript() throws InterruptedException{
             p.waitFor();
             p.destroy();
            
-            Thread.sleep(8000);
+            Thread.sleep(10000);
             
             } catch (Exception e) 
             {

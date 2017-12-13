@@ -66,11 +66,15 @@
 				<br> <br> <label for="startDate">Start Date:</label>&nbsp
 				<input type="text" name="startDate_picker" id="startDate_picker"
 					placeholder="Select start date" required="required"
-					class="datepicker"> &nbsp &nbsp &nbsp &nbsp <label
+					class="datepicker"> &nbsp &nbsp &nbsp &nbsp 
+					
+					<label
 					for="endDate">End Date:</label> &nbsp <input type="text"
 					name="endDate_picker" id="endDate_picker"
 					placeholder="Select end date" required="required"
-					class="datepicker"> <br> <br> <br> <input
+					class="datepicker"> <br> <br> <br>
+					
+					 <input
 					type="submit" name="button3" id="button3" class="btn btn-primary"
 					value="Run Script" />
 

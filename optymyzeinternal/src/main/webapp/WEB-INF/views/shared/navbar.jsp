@@ -23,8 +23,8 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				
-				<li id="Perlrun">
-						<a href="${contextRoot}/perlrun">PerlRun</a></li>
+		<!--  		<li id="Perlrun">
+						<a href="${contextRoot}/perlrun">PerlRun</a></li> -->
 				<li id="Reporting">
 						<a href="${contextRoot}/reporting">Reporting</a></li>
 				<li id="Notification">

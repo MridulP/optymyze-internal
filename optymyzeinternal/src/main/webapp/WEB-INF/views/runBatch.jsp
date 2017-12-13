@@ -13,12 +13,11 @@
 			<br>					
 				
 					<br>
-					
-				    
+						    
 				    <form action="${pageContext.request.contextPath}/download" id=frms>
 					<input type="submit" name="button10" id=button10 class="btn btn-primary" value="Download File" />
 					
-					
+					 
 					<script>
 					$('#frms').bind('submit', function(e) {
 						var button = $('#button10');

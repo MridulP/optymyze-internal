@@ -1,5 +1,6 @@
 package com.spm.optymyzeinternal.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import com.spm.optymyzeinternal.service.CreateBatch;
-import com.spm.optymyzeinternal.service.MoveBatch;
 import com.spm.optymyzeinternal.service.RunBatch;
 
 @Controller
@@ -73,7 +72,7 @@ public class PageController {
 	}
 	
 	
-	
+	public static String projInput2;
 	@RequestMapping(value= {"/runBatch"}, method= RequestMethod.POST)
 	public  ModelAndView actionRun (@RequestParam("projInput") String projInput,
 																		@RequestParam("dbInput") String dbInput,
@@ -83,7 +82,7 @@ public class PageController {
 																		@RequestParam("endDate_picker") String endDate_picker,
 																		Map<String,Object> map) throws FileNotFoundException, InterruptedException {
 		
-		final String filePrefix = projInput;
+		projInput2 = projInput;
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","runBatch");
@@ -98,6 +97,8 @@ public class PageController {
 		RunBatch obj2=new RunBatch();
 		
 		obj2.runScript();	
+		
+		   
 	
 	// Move Batch File
 	//	MoveBatch obj3=new MoveBatch();
@@ -111,18 +112,16 @@ public class PageController {
 	@RequestMapping(value= {"/download"})
 	public void downloadResource (HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String filePath = "c:\\eclipse\\";
+		File file = new File("c:\\eclipse\\"+projInput2);
 		//String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
-		
-		
-		
-		String fileName = "Session_report.html";
-		
+			
+		String fileName = projInput2;
 		
 		response.setContentType("text/html");		
-		response.addHeader("Content-Disposition", "attachment; filename "+fileName); 
+		response.setHeader("Content-Disposition", "attachment; filename=\""+file.getName()+ ".html"+"\""); 
+		// "\""
 		PrintWriter out = response.getWriter();
-		FileInputStream fileInputStream = new FileInputStream(filePath +fileName);   
+		FileInputStream fileInputStream = new FileInputStream(file);   
             try
             {
             	int i;
@@ -134,8 +133,8 @@ public class PageController {
                 ex.printStackTrace();
             }
   
-            MoveBatch act = new MoveBatch();
-            act.moveFile();
+            CreateBatch obj3=new CreateBatch();
+            obj3.fileTransfer();
 			
 	}
 	
