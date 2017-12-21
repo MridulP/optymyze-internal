@@ -31,8 +31,15 @@
 						<a href="${contextRoot}/notification">Notification</a></li>
 			</ul>
 			
+						
 		</div>
+		
+		
 		<!-- /.navbar-collapse -->
 	</div>
+	
+
+	
+	
 	<!-- /.container -->
 </nav>

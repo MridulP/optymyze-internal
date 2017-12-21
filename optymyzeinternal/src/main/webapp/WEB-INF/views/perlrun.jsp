@@ -20,7 +20,7 @@
 				<div class="input-group">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cloud"></i></span> <input type="text"
-						name="projInput" class="form-control" placeholder="Enter Project"
+						name="projInput" class="form-control" placeholder="Enter Schema"
 						required="required" />
 				</div>
 
@@ -29,7 +29,7 @@
 				<div class="input-group">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cd"></i></span> <input type="text"
-						name="dbInput" class="form-control" placeholder="Enter Database"
+						name="dbInput" class="form-control" placeholder="Enter Hostname"
 						required="required" />
 				</div>
 

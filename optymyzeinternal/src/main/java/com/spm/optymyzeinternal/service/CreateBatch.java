@@ -70,7 +70,30 @@ public class CreateBatch {
 	            System.out.println("File moved and version incremented sucessfully"); 
 	        }
 		
-
+	public void createBatch2(String name){
+		
+		try {
+		File file2 = new File ("\\c:\\Perl\\CharDetect.bat");
+		FileOutputStream fos2  = new FileOutputStream(file2);
+		DataOutputStream dos2 = new DataOutputStream(fos2);
+		
+			dos2.writeBytes("perl c:\\Perl\\");
+			dos2.writeBytes("DetectCharSet.pl");
+			dos2.writeBytes(" c:\\Perl\\tmpFiles\\"+name);
+			dos2.writeBytes(" > ");
+			dos2.writeBytes("c:\\Perl\\tmpFiles\\Output_report.txt");
+			
+			dos2.close();
+			fos2.close();
+			
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+	}
+	
+	
 		
 
 	

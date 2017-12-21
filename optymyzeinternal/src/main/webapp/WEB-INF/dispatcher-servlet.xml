@@ -9,8 +9,7 @@
    http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
-   
-   ">
+ ">
    
    <context:component-scan base-package="com.spm.optymyzeinternal.controller"/>
    
@@ -21,6 +20,17 @@
    	
    	</bean>
    	
+   	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+
+	<!-- setting maximum upload size -->
+	
+		<property name="maxUploadSize" value="400000000" />
+
+	</bean>
+   	
+   	
    	<!-- Loading static resources -->
    	
    	<mvc:annotation-driven/>
@@ -28,9 +38,6 @@
    	 <mvc:default-servlet-handler/>
    	
    	<mvc:resources location="/assets/" mapping="/resources/**"/>
-   	
-   	
-   	
-   	
+   	   	
    	
 </beans>   

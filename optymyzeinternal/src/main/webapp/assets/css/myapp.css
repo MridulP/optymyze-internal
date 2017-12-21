@@ -6,11 +6,16 @@ html {
 body {
   padding-top: 80px;
   height:100%;
-  margin-bottom: 50px;
+ 
 }
 
 .slide-image {
   width: 100%;
+   float: left;
+   margin: 0px;
+   padding: 0px;
+   position: relative;
+  
 }
 
 .carousel-holder {
@@ -54,7 +59,7 @@ footer {
 }
 
 /*
-	 Custom CSS
+	 Custom Styling
 */
 
 .wrapper {
@@ -72,7 +77,7 @@ footer {
 	
 	position:absolute;
 	bottom:15px;
-	height: 5px;
+	height: 60px;
 	width: 100%;
 	float:left;
 	
@@ -80,7 +85,6 @@ footer {
 
 .navbar-nav > li {
   
-
   margin-right:10px
 }
 

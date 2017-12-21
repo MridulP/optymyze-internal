@@ -81,6 +81,10 @@
 				<%@include file="charDetect.jsp"%>
 			</c:if>
 			
+			<c:if test="${userClickupload == true }">
+				<%@include file="uploadSuccess.jsp"%>
+			</c:if>
+			
 			
 			
 
@@ -93,6 +97,7 @@
 		<!-- /.container -->
 
 		<!-- JavaScript -->
+		
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.js"></script>
 

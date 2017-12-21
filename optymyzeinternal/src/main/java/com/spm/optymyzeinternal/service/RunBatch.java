@@ -1,9 +1,7 @@
 package com.spm.optymyzeinternal.service;
 
-import java.io.File;
-import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Arrays;
 import org.springframework.stereotype.Service;
 
 
@@ -47,37 +45,34 @@ public void runScript() throws InterruptedException{
 	}
 
 
-
-
-
-
-}
-
+	public void runScript2() {
+		try {
+		String  [] command = { "cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"};
+		Runtime r1 = Runtime.getRuntime();
+        Process p1 = r1.exec(command);
+        p1.waitFor();
+        p1.destroy();
 		
-/*
-@Override
-public void run() {
-	
-	SimpleAsyncTaskExecutor taskExecuter=new SimpleAsyncTaskExecutor("Thread1");
-	taskExecuter.execute(this);					
-	
-}
-}
-*/
+		;
+		
+		/*ProcessBuilder pb = new ProcessBuilder(Arrays.asList(new String[] {"cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"}));
+		pb.redirectErrorStream(true);
+		try {
+		    Process proc = pb.start();
+		    proc.waitFor();
+		  
+		    proc.destroy();*/
+		    
+		} catch (Exception e) {
+		    e.printStackTrace();
 
-/*
-public static void  runBatchScript() {
-    try {
-    	System.out.println("process started");       	
-    	String path = "c:/perl/test.bat";
- 
-    	
-		
-    	System.out.println("process running");       	
-		
-    } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-    }
 }
-*/
+
+	}
+}
+
+
+
+
+
+
