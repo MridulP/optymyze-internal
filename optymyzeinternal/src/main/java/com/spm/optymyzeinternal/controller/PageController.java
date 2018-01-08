@@ -9,7 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.logging.FileHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -110,13 +113,23 @@ public class PageController {
 
 		// Call method to run batch file
 
-		// RunBatch obj2=new RunBatch();
+		 //RunBatch obj2=new RunBatch();
 		// obj2.runScript();
 
 		PageController action = new PageController();
 		action.runBatch();
-
-		return mv;
+	
+			if (terminalOutput .equals("Completed sucessfully.") ){
+			
+			System.out.println("inside if completed statement");
+			
+			return mv;
+			
+		} else {
+			System.out.println("Staticoutput " + terminalOutput);
+			return failBatchHandle();
+		}
+		
 
 	}
 
@@ -147,17 +160,20 @@ public class PageController {
 
 	}
 
-	public static String terminalOutput;
+	public static String terminalOutput ="";
 
-	public void runBatch() {
+	public void  runBatch() {
 
 		try {
 			// String [] command = { "cmd.exe", "/C", "Start",
 			// "C:\\Perl\\test.bat" };
-			String[] command = { "C:\\Perl\\test.bat" };
+			String[] command = {"cmd.exe","/c","C:\\Perl\\test.bat"};
+			String result = "Completed succesfully";
+		//	String terminalOutput = new String ();
+			
 			Runtime r = Runtime.getRuntime();
 			Process p = r.exec(command);
-
+			
 			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line;
 			String cmdOut;
@@ -168,21 +184,35 @@ public class PageController {
 				System.out.println(cmdOut);
 				terminalOutput = cmdOut;
 			}
-
-			System.out.println("Staticoutput " + terminalOutput);
+			
 			stdInput.close();
 
 			p.waitFor();
 			p.destroy();
 
-			Thread.sleep(10000);
-
+			//Thread.sleep(10000);		
+			
 		} catch (Exception e) {
 			System.out.println("Execution error");
 		}
 		System.out.println("after batch execution");
 		System.gc();
-
+		
+		
+		/*
+		if (terminalOutput.equals("Completed sucessfully")){
+			
+			System.out.println("inside if completed statement");
+			
+			return "redirect:runBatch";
+			
+		} else {
+			
+			System.out.println("inside if failed statement");
+			return "redirect:failBatch";
+		} */
+		
+		
 	}
 
 	public static String Filename;
@@ -191,7 +221,7 @@ public class PageController {
 																								   @RequestParam("name") String name,
 																								   @RequestParam("file") MultipartFile file, Map<String, Object> map) {
 		Filename=name;
-		
+
 		System.out.println("Name of uploaded file is:"+Filename);
 		
 		//redirectAttributes.addAttribute("namekey", "name");
@@ -200,10 +230,8 @@ public class PageController {
 		mv.addObject("title", "uploadSuccess");
 		mv.addObject("userClickupload", true);
 		
-			
 		FileUpload handler = new FileUpload();
-		handler.uploadHandler(name,file);
-		
+		handler.uploadHandler(name,file);	
 
 		return mv;
 	}
@@ -228,7 +256,22 @@ public class PageController {
 		callperl.runScript2();
 
 		return mv;
+		
 	}
 	
-
+	
+	@RequestMapping(value = {"/failBatch"})
+	public ModelAndView failBatchHandle(){
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "failBatch");
+		mv.addObject("failedCondition", true);
+		
+		return mv;
+		
+		
+	}
+	
+	
+	
 }

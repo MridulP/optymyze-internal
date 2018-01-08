@@ -101,47 +101,17 @@
 		</form> -->
 		
 		
-
-<div style="width:400px;">
-    <div style="float: left; width: 130px"> 
-         <form action="${pageContext.request.contextPath}/perlrun" id=frms2>
-            	<input type="submit"  name="button3" id="button3" class="btn btn-success"
-          value=" Run again.." >
-        </form>
-    </div>
-    <div style="float: right; width: 225px"> 
-         <form action="${pageContext.request.contextPath}/download" id=frms>
-            <input type="submit" name="button10" id=button10 class="btn btn-primary" value="Download File"/>
-        </form>
-    </div>
-</div>
-
-
-		
-		
-		
-		
-		
-  <!--    <td>
- 
-    <form action="${pageContext.request.contextPath}/download" id=frms> 	<input type="submit" disabled name="button3" id="button3" class="btn btn-success"
-          value=" Run again" > &nbsp &nbsp &nbsp &nbsp 
+  <td>
+    <form action="${pageContext.request.contextPath}/perlrun" id=frms> 	<input type="submit"  name="button3" id="button3" class="btn btn-warning"
+          value=" Try again.." > &nbsp &nbsp &nbsp &nbsp 
     
-          <input type="submit" name="button10" id=button10 class="btn btn-primary" value="Download File"/>
-    
-     </form>
-    <form action="${pageContext.request.contextPath}/perlrun" id=frms2> 	<input type="submit" name="button20" id="button20" class="btn btn-success"
-          value="Run again"/ >
+          
     </form>
- 
-  </td>  -->
-	
-	<br> <br>
-	<br>	
-	<div class="alert alert-success">
-  	<strong>Success!</strong> You can click above download button to get report..
+  </td> 
+		<br>
+		<div class="alert alert-danger">
+  	<strong>Error!</strong> Script failed due to DB connectivity issue. Check with administrator to get more details.
 	</div>
-	
 		
 		
             <script>

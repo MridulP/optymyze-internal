@@ -20,16 +20,25 @@
     </form>
 		
 		
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-right">
+		    <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav navbar-right"> 
 				
-		<!--  		<li id="Perlrun">
-						<a href="${contextRoot}/perlrun">PerlRun</a></li> -->
-				<li id="Reporting">
+		 <!--  	  	<li id="Perlrun">
+						<a href="${contextRoot}/perlrun">Feedback</a></li> -->	
+						
+		<!-- 		<li id="Reporting">
 						<a href="${contextRoot}/reporting">Reporting</a></li>
 				<li id="Notification">
-						<a href="${contextRoot}/notification">Notification</a></li>
-			</ul>
+						<a href="${contextRoot}/notification">Notification</a></li>  -->
+						
+						<form class="navbar-form navbar-right">
+						
+						 <a class="btn btn-primary btn-sm"  href="MAILTO:oz-support@optymyze.com?subject=Feedback Optymyze Support Internal">Feedback</a> -->
+					<!-- 	<div class="form-group">  -->
+						</form>
+						
+		 	</ul> 
+		
 			
 						
 		</div>

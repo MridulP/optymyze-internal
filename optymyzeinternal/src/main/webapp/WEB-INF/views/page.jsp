@@ -85,6 +85,10 @@
 				<%@include file="uploadSuccess.jsp"%>
 			</c:if>
 			
+			<c:if test="${failedCondition == true }">
+				<%@include file="failBatch.jsp"%>
+			</c:if>
+			
 			
 			
 

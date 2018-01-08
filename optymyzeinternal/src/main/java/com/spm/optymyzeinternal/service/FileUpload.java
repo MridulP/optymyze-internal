@@ -31,7 +31,7 @@ public class FileUpload {
 					dir.mkdirs();
 
 				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
+				File serverFile = new File(dir.getAbsolutePath() + File.separator+name );
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 				stream.write(bytes);
 				stream.close();
@@ -45,7 +45,7 @@ public class FileUpload {
 				}
 
 				} else {
-				logger.info("You failed to upload " + name + " because the file was empty.");
+				logger.info("You failed to upload " + name+" because the file was empty.");
 		}
 	}
 	
