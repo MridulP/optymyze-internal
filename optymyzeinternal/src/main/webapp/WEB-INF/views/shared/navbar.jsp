@@ -33,7 +33,7 @@
 						
 						<form class="navbar-form navbar-right">
 						
-						 <a class="btn btn-primary btn-sm"  href="MAILTO:oz-support@optymyze.com?subject=Feedback Optymyze Support Internal">Feedback</a> -->
+						 <a class="btn btn-default btn-xs"  href="MAILTO:oz-support@optymyze.com?subject=Feedback Optymyze Support Internal">Feedback</a> -->
 					<!-- 	<div class="form-group">  -->
 						</form>
 						

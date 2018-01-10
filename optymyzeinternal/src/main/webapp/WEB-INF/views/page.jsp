@@ -89,6 +89,10 @@
 				<%@include file="failBatch.jsp"%>
 			</c:if>
 			
+			<c:if test="${userClickrun == true }">
+				<%@include file="runScript.jsp"%>
+			</c:if>
+			
 			
 			
 

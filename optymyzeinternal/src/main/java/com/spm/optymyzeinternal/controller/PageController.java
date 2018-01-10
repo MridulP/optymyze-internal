@@ -159,6 +159,36 @@ public class PageController {
 		obj3.fileTransfer();
 
 	}
+	
+	@RequestMapping(value = { "/download2" })
+	  public void downloadResource2(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+	    File file = new File("c:\\perl\\tmpFiles\\Output_report.txt");
+	    // String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
+
+	    response.setContentType("text/html");
+	    response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName()  + "\"");
+	    // "\""
+	    PrintWriter out = response.getWriter();
+	    FileInputStream fileInputStream = new FileInputStream(file);
+	    try {
+	      int i;
+	      while ((i = fileInputStream.read()) != -1) {
+	        out.write(i);
+	      }
+	      fileInputStream.close();
+	      out.close();
+	    } catch (IOException ex) {
+	      ex.printStackTrace();
+	    }
+
+	  }
+	
+	
+	
+	
+	
+	
 
 	public static String terminalOutput ="";
 
@@ -218,11 +248,12 @@ public class PageController {
 	public static String Filename;
 	@RequestMapping(value = {"/uploadSuccess"}, method = RequestMethod.POST)
 	public @ResponseBody ModelAndView uploadFileHandler( RedirectAttributes redirectAttributes,
-																								   @RequestParam("name") String name,
-																								   @RequestParam("file") MultipartFile file, Map<String, Object> map) {
+																								   						@RequestParam("file") MultipartFile file, Map<String, Object> map) {
+		
+		String name = file.getOriginalFilename();
 		Filename=name;
-
-		System.out.println("Name of uploaded file is:"+Filename);
+		
+		//System.out.println("Name of uploaded file is:"+Filename);
 		
 		//redirectAttributes.addAttribute("namekey", "name");
 		
@@ -231,11 +262,22 @@ public class PageController {
 		mv.addObject("userClickupload", true);
 		
 		FileUpload handler = new FileUpload();
-		handler.uploadHandler(name,file);	
+		handler.uploadHandler(file);	
 
 		return mv;
 	}
 	
+	
+	
+	
+
+	public ModelAndView success() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "runBatch");
+		mv.addObject("userClickrun", true);
+		return mv;
+	}
 	
 	
 	@RequestMapping(value = {"/runScript"})
@@ -255,7 +297,7 @@ public class PageController {
 		RunBatch callperl=new RunBatch();
 		callperl.runScript2();
 
-		return mv;
+		return success();
 		
 	}
 	

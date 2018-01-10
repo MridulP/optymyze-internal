@@ -116,10 +116,6 @@
     </div>
 </div>
 
-
-		
-		
-		
 		
 		
   <!--    <td>
@@ -138,10 +134,22 @@
 	
 	<br> <br>
 	<br>	
-	<div class="alert alert-success">
+	<div class="alert alert-success" id=alertElement>
   	<strong>Success!</strong> You can click above download button to get report..
 	</div>
 	
+		<script>
+		$('input[name=button10]')
+		.click(
+		     function ()
+		     {
+		         $(this).hide();
+		         $("#alertElement").hide();
+		     }
+		);
+		
+		</script>
+		
 		
 		
             <script>

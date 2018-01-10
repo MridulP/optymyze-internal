@@ -34,17 +34,6 @@
 				</div>
 
 
-
-				<!--		<div class="input-group">
-					<span class="input-group-addon"><i
-						class="glyphicon glyphicon-cd"></i></span>		
-				      <select
-						class="form-control" name="dbinput"  id="dbInput" placeholder="Enter Database">
-						<option value="Low">Select Database</option>
-						<option value="Low">DESJARDINS_SND2_SPM</option>
-					</select>
-					</div> -->
-
 				<br>
 
 				<div class="input-group">
@@ -68,7 +57,6 @@
 				<input type="text" name="startDate_picker" id="startDate_picker"
 					placeholder="Select start date" required="required"
 					class="datepicker"> &nbsp &nbsp &nbsp &nbsp 
-				
 				
 			
 					<label
@@ -107,9 +95,22 @@
 			</form>
 			<br>
 
+		<script>
+		$(document).ready(function(){
 
+		    $("#startDate_picker").datepicker({
+		        onSelect: function(selected) {
+		          $("#endDate_picker").datepicker("option","minDate", selected)
+		        }
+		    });
 
-
+		    $("#endDate_picker").datepicker({		        
+		        onSelect: function(selected) {
+		    //       $("#startDate_picker").datepicker("option","maxDate", selected)
+		        }
+		    }); 
+		});
+		</script>
 
 			<script>
 				$(document).ready(function() {

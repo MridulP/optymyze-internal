@@ -3,6 +3,9 @@ package com.spm.optymyzeinternal.service;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,36 +19,40 @@ public class FileUpload {
 	private static final Logger logger = LoggerFactory.getLogger(FileUpload.class);
 	
 	
-	public void uploadHandler(String name,MultipartFile file){
-		
+	public void uploadHandler(MultipartFile file){
+		String UPLOADED_FOLDER = "C:\\perl\\";
 		if (!file.isEmpty()) {
 			try {
+				
+				// Get the file and save it somewhere
 				byte[] bytes = file.getBytes();
+				
+				Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+				Files.write(path, bytes);
 
-				// Creating the directory to store file
-
-				// String rootPath = System.getProperty("catalina.home");
-				String rootPath = "C:\\perl\\";
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
+				
+				
+			/*	File dir = new File(rootPath + File.separator + "tmpFiles");
+				
+					if (!dir.exists())
+					dir.mkdirs(); 
 
 				// Create the file on server
 				File serverFile = new File(dir.getAbsolutePath() + File.separator+name );
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 				stream.write(bytes);
-				stream.close();
+				stream.close(); */
 
-				logger.info("Server File Location=" + serverFile.getAbsolutePath());
+			//	logger.info("Server File Location=" + serverFile.getAbsolutePath());
 
 				// return "You successfully uploaded file=" + name;
 
 				} catch (Exception e) {
-				logger.info("You failed to upload " + name + " => " + e.getMessage());
+				logger.info("You failed to upload "  + e.getMessage());
 				}
 
 				} else {
-				logger.info("You failed to upload " + name+" because the file was empty.");
+				logger.info("You failed to upload because the file was empty.");
 		}
 	}
 	

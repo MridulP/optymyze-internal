@@ -17,18 +17,32 @@
 			
 		<div style="width:400px;">
     <div style="float: left; width: 130px"> 
-         <form action="${pageContext.request.contextPath}/runScript" id=frms3>
-              <input type="submit" name="button11" id=button11 class="btn btn-primary" value="Run Script" />
+         <form action="${pageContext.request.contextPath}/charDetect" id=frms3>
+              <input type="submit" name="button14" id=button14 class="btn btn-success" value="Run again"  />
         </form>
     </div>
- <!--     <div style="float: right; width: 225px"> 
+    <div style="float: right; width: 225px"> 
          <form action="${pageContext.request.contextPath}/download2" id=frms>
             <input type="submit" name="button12" id=button12 class="btn btn-primary" value="Download"  />
         </form>
     </div>
-</div> -->
+</div>
+<br><br><br>
+<div class="alert alert-success" id=alertElement2>
+  	<strong>Script ran successfully!</strong> You can click above download button to get report..
+	</div>
 			
-			
+			<script>
+		$('input[name=button12]')
+		.click(
+		     function ()
+		     {
+		         $(this).hide();
+		         $("#alertElement2").hide();
+		     }
+		);
+		
+		</script>
 			
 			
 			
