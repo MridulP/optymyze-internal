@@ -93,9 +93,11 @@
 				<%@include file="runScript.jsp"%>
 			</c:if>
 			
+			<c:if test="${userClickfail == true }">
+				<%@include file="failScript.jsp"%>
+			</c:if>
 			
-			
-
+		
 		</div>
 
 		<!-- Footer comes here -->

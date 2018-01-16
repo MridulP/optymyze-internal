@@ -6,10 +6,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.logging.FileHandler;
 
@@ -113,9 +115,6 @@ public class PageController {
 
 		// Call method to run batch file
 
-		 //RunBatch obj2=new RunBatch();
-		// obj2.runScript();
-
 		PageController action = new PageController();
 		action.runBatch();
 	
@@ -136,7 +135,9 @@ public class PageController {
 	@RequestMapping(value = { "/download" })
 	public void downloadResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		File file = new File("c:\\eclipse\\" + projInput2);
+		//File file = new File("c:\\eclipse\\" + projInput2);
+		File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
+		
 		// String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
 
 		response.setContentType("text/html");
@@ -163,8 +164,9 @@ public class PageController {
 	@RequestMapping(value = { "/download2" })
 	  public void downloadResource2(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-	    File file = new File("c:\\perl\\tmpFiles\\Output_report.txt");
-	    // String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
+		File file = new File("c:\\perl\\tmpFiles\\Output_report.txt");
+	    //File file = new File("e:\\Detect_Character_Encoding\\Output_report.txt");
+	    
 
 	    response.setContentType("text/html");
 	    response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName()  + "\"");
@@ -184,11 +186,7 @@ public class PageController {
 
 	  }
 	
-	
-	
-	
-	
-	
+		
 
 	public static String terminalOutput ="";
 
@@ -227,6 +225,7 @@ public class PageController {
 		}
 		System.out.println("after batch execution");
 		System.gc();
+		
 		
 		
 		/*
@@ -268,16 +267,22 @@ public class PageController {
 	}
 	
 	
-	
-	
-
-	public ModelAndView success() {
+	public ModelAndView scriptSuccess() {
 
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "runBatch");
+		mv.addObject("title", "runScript");
 		mv.addObject("userClickrun", true);
 		return mv;
 	}
+	
+	public ModelAndView scriptFailed() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "failScript");
+		mv.addObject("userClickfail", true);
+		return mv;
+	}
+	
 	
 	
 	@RequestMapping(value = {"/runScript"})
@@ -294,11 +299,24 @@ public class PageController {
 		CreateBatch obj2=new CreateBatch();
 		obj2.createBatch2(Filename);
 		
-		RunBatch callperl=new RunBatch();
+		PageController callperl=new PageController();
 		callperl.runScript2();
-
-		return success();
 		
+		System.out.println("Static output outside method: "+terminalOutput2); 
+	
+		if (terminalOutput2 .equals("No such file or directory") ){
+			
+			System.out.println("inside if failed statement");
+			
+			return scriptFailed();
+			
+		} else {
+			
+			System.out.println("inside if completed statement");
+			System.out.println("Staticoutput else " + terminalOutput2);
+			
+			return scriptSuccess();
+		}
 	}
 	
 	
@@ -314,6 +332,48 @@ public class PageController {
 		
 	}
 	
+	public static String terminalOutput2 ="";
+	public void runScript2() {
+		
+		
+		/*try {
+		String  [] command = { "cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"};
+		Runtime r1 = Runtime.getRuntime();
+        Process p1 = r1.exec(command);*/
+    	
+		try {
+        ProcessBuilder pb = new ProcessBuilder(Arrays.asList(new String[] {"cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"}));
+    	pb.redirectErrorStream(true);
+    	
+    	Process proc = pb.start();
+    	Thread.sleep(12000);
+    	
+    	proc.waitFor();   		
+        
+
+		
+    	String outputFile = "c:\\Perl\\tmpFiles\\Output_report.txt";
+		String line2;
+		
+        BufferedReader stdInput2 = new BufferedReader(new FileReader(outputFile));
+		
+        while ((line2 = stdInput2.readLine()) != null) {
+		
+			System.out.println("Loop File output"+line2);
+			terminalOutput2 = line2;
+			
+		}
+		
+		System.out.println("Static output inside method: "+terminalOutput2); 
+		
+		stdInput2.close();
+		
+		}	catch (Exception e) {
+		    e.printStackTrace();		    
+		}
+        
+        
 	
 	
+}
 }

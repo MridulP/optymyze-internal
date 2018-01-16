@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	
 	
-	<version>1.0</version>
+	<version>1.3</version>
 	<name>optymyzeinternal Webapp</name>
 	<url>http://maven.apache.org</url>
 

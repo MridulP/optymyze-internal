@@ -53,7 +53,7 @@ public void runScript() throws InterruptedException{
         p1.waitFor();
         p1.destroy();
 		
-		;
+		
 		
 		/*ProcessBuilder pb = new ProcessBuilder(Arrays.asList(new String[] {"cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"}));
 		pb.redirectErrorStream(true);

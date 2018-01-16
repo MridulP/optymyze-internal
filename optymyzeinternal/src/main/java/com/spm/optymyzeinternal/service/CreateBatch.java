@@ -56,13 +56,15 @@ public class CreateBatch {
 	     String fileName = projInput1;
 	     System.out.println("Value of project during move"+projInput1);
 	     Date date = new Date();
-	  //Format formatter = new SimpleDateFormat("MM/DD/YYYY hh:mm:ss");
+	  
 	     
-	     File f = new File("C:\\eclipse\\"+projInput1); 
+	     //File f = new File("C:\\eclipse\\"+projInput1); 
+	     	File f = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput1); 
+	     
 
 	            while(f.exists()) {     
 
-	            //  f.renameTo(new File("c:\\perl\\"+fileName + "_"+formatter.format(date)+".html"));
+	           
 	               f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
 	               version++;
 	                
@@ -72,6 +74,8 @@ public class CreateBatch {
 		
 	public void createBatch2(String name){
 		
+		System.out.println("File Name is:"+name);
+		
 		try {
 		File file2 = new File ("\\c:\\Perl\\CharDetect.bat");
 		FileOutputStream fos2  = new FileOutputStream(file2);
@@ -79,9 +83,10 @@ public class CreateBatch {
 		
 			dos2.writeBytes("perl c:\\Perl\\");
 			dos2.writeBytes("DetectCharSet.pl");
-			dos2.writeBytes(" c:\\Perl\\tmpFiles\\"+name);
+			dos2.writeBytes(" c:\\Perl\\"+name);
 			dos2.writeBytes(" > ");
 			dos2.writeBytes("c:\\Perl\\tmpFiles\\Output_report.txt");
+			//dos2.writeBytes("e:\\Detect_Character_Encoding\\Output_report.txt");
 			
 			dos2.close();
 			fos2.close();
