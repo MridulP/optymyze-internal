@@ -150,8 +150,8 @@ public class PageController {
 	@RequestMapping(value = { "/download" })
 	public void downloadResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		//File file = new File("c:\\eclipse\\" + projInput2);
-		File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
+		    File file = new File("c:\\eclipse\\" + projInput2);
+		//File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
 		
 		// String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
 
@@ -208,11 +208,9 @@ public class PageController {
 	public void  runBatch() {
 
 		try {
-			// String [] command = { "cmd.exe", "/C", "Start",
-			// "C:\\Perl\\test.bat" };
+			
 			String[] command = {"cmd.exe","/c","C:\\Perl\\test.bat"};
 			String result = "Completed succesfully";
-		//	String terminalOutput = new String ();
 			
 			Runtime r = Runtime.getRuntime();
 			Process p = r.exec(command);
@@ -242,19 +240,6 @@ public class PageController {
 		System.gc();
 		
 		
-		
-		/*
-		if (terminalOutput.equals("Completed sucessfully")){
-			
-			System.out.println("inside if completed statement");
-			
-			return "redirect:runBatch";
-			
-		} else {
-			
-			System.out.println("inside if failed statement");
-			return "redirect:failBatch";
-		} */
 		
 		
 	}

@@ -57,21 +57,54 @@ public class CreateBatch {
 	     String fileName = projInput1;
 	     System.out.println("Value of project during move"+projInput1);
 	     Date date = new Date();
-	  
+	  	     
+	         File f = new File("C:\\eclipse\\"+projInput1); 
+	     	//File f = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput1); 
 	     
-	     //File f = new File("C:\\eclipse\\"+projInput1); 
-	     	File f = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput1); 
-	     
-
 	            while(f.exists()) {     
 
-	               f.renameTo(new File("e:\\Concurrent_user_session\\"+fileName + "_"+version+".html"));
-	              // f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
-	               version++;
-	                
+	             //  f.renameTo(new File("e:\\Concurrent_user_session\\"+fileName + "_"+version+".html"));
+	               f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
+	               version++;	                
 	            }
 	            System.out.println("File moved and version incremented sucessfully"); 
+	            
+	            
+	            CreateBatch delAction = new CreateBatch();
+	            delAction.delete(7,".html");
+	            
 	        }
+	
+	
+	public void delete(long days, String fileExtension){
+		
+		String dirPath = "c:\\perl";
+		File folder = new File(dirPath);
+		
+		if (folder.exists()) {
+			 
+            File[] listFiles = folder.listFiles();
+ 
+            long eligibleForDeletion = System.currentTimeMillis() - (days * 24 * 60 * 60 * 1000L);
+ 
+            for (File listFile: listFiles) {
+ 
+                if (listFile.getName().endsWith(fileExtension) &&
+                    listFile.lastModified() < eligibleForDeletion) {
+ 
+                    if (!listFile.delete()) {
+ 
+                        System.out.println("Sorry Unable to Delete Files..");
+ 
+                    }
+                }
+            }
+        }
+    }
+		
+	
+	
+	
 		
 	public void createBatch2(String name){
 		
