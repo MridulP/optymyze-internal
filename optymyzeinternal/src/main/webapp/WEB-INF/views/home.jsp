@@ -1,14 +1,18 @@
+  
+  
+  
+  
     <div class="container">
 
         <div class="row">
          
             <div class="col-md-3">
-                <p class="lead">Task to Execute</p>
+                <p class="lead"> <b> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFeatures</b></p>
                 <div class="list-group">
                     <a href="perlrun"  class="list-group-item" >Concurrent User Session</a>
                     <a href="charDetect"  class="list-group-item">Detect Character Encoding</a>
-                    <a href="reporting"  class="list-group-item">Report Schedule</a>
-                    <a href="notification"  class="list-group-item">Alert Management</a>
+                    
+                    <a href="pdfcontent"  class="list-group-item">Support Hand Book </a>
                 </div>
             </div>
 

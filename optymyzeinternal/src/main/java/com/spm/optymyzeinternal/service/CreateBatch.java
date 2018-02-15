@@ -40,7 +40,8 @@ public class CreateBatch {
 			dos.writeBytes(" "+startDate_picker);
 			dos.writeBytes(" -e");
 			dos.writeBytes(" "+endDate_picker);
-			
+			dos.writeBytes(" -c");
+			dos.writeBytes(" "+projInput);
 			dos.close();
 			fos.close();
 			
@@ -64,8 +65,8 @@ public class CreateBatch {
 
 	            while(f.exists()) {     
 
-	           
-	               f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
+	               f.renameTo(new File("e:\\Concurrent_user_session\\"+fileName + "_"+version+".html"));
+	              // f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
 	               version++;
 	                
 	            }
@@ -85,8 +86,8 @@ public class CreateBatch {
 			dos2.writeBytes("DetectCharSet.pl");
 			dos2.writeBytes(" c:\\Perl\\"+name);
 			dos2.writeBytes(" > ");
-			dos2.writeBytes("c:\\Perl\\tmpFiles\\Output_report.txt");
-			//dos2.writeBytes("e:\\Detect_Character_Encoding\\Output_report.txt");
+			//dos2.writeBytes("c:\\Perl\\tmpFiles\\Output_report.txt");
+			dos2.writeBytes("e:\\Detect_Character_Encoding\\Output_report.txt");
 			
 			dos2.close();
 			fos2.close();

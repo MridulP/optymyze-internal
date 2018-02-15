@@ -10,8 +10,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 import java.util.logging.FileHandler;
 
@@ -73,12 +79,12 @@ public class PageController {
 		return mv;
 	}
 
-	@RequestMapping(value = { "/notification" })
+	@RequestMapping(value = { "/pdfcontent" })
 	public ModelAndView tabthree() {
 
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Notification");
-		mv.addObject("userClicktab3", true);
+		mv.addObject("title", "Pdfcontent");
+		mv.addObject("userClickpdf", true);
 		return mv;
 	}
 
@@ -100,7 +106,7 @@ public class PageController {
 																	  @RequestParam("password") String password,
 																	  @RequestParam("startDate_picker") String startDate_picker,
 																	  @RequestParam("endDate_picker") String endDate_picker, Map<String, Object> map)
-																	  throws FileNotFoundException, InterruptedException {
+																	  throws FileNotFoundException, InterruptedException, ParseException {
 
 		
 		projInput2=projInput;
@@ -108,10 +114,19 @@ public class PageController {
 		mv.addObject("title", "runBatch");
 		mv.addObject("button3", true);
 
+		
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+		
+		Date date = new SimpleDateFormat("MM/dd/yyyy HH:mm").parse(startDate_picker);
+		Date date1 = new SimpleDateFormat("MM/dd/yyyy HH:mm").parse(endDate_picker);
+	
+		String targetStart = outputFormat.format(date);
+		String endStart = outputFormat.format(date1);
+		
 		// Call method to create batch file
 
 		CreateBatch obj = new CreateBatch();
-		obj.createScript(projInput, dbInput, userid, password, startDate_picker, endDate_picker);
+		obj.createScript(projInput, dbInput, userid, password, targetStart, endStart);
 
 		// Call method to run batch file
 
@@ -164,8 +179,8 @@ public class PageController {
 	@RequestMapping(value = { "/download2" })
 	  public void downloadResource2(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		File file = new File("c:\\perl\\tmpFiles\\Output_report.txt");
-	    //File file = new File("e:\\Detect_Character_Encoding\\Output_report.txt");
+		//File file = new File("c:\\perl\\tmpFiles\\Output_report.txt");
+	    File file = new File("e:\\Detect_Character_Encoding\\Output_report.txt");
 	    
 
 	    response.setContentType("text/html");
@@ -336,23 +351,21 @@ public class PageController {
 	public void runScript2() {
 		
 		
-		/*try {
+		try {
 		String  [] command = { "cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"};
 		Runtime r1 = Runtime.getRuntime();
-        Process p1 = r1.exec(command);*/
-    	
+        Process p1 = r1.exec(command);
+        p1.waitFor(); 
+        Thread.sleep(30000);
+		p1.destroy();
+    /*	
 		try {
         ProcessBuilder pb = new ProcessBuilder(Arrays.asList(new String[] {"cmd.exe", "/C", "Start", "C:\\Perl\\CharDetect.bat"}));
     	pb.redirectErrorStream(true);
     	
-    	Process proc = pb.start();
-    	Thread.sleep(12000);
-    	
-    	proc.waitFor();   		
-        
-
-		
-    	String outputFile = "c:\\Perl\\tmpFiles\\Output_report.txt";
+    	Process proc = pb.start(); */
+       
+    	String outputFile = "e:\\Detect_Character_Encoding\\Output_report.txt";
 		String line2;
 		
         BufferedReader stdInput2 = new BufferedReader(new FileReader(outputFile));
@@ -367,6 +380,8 @@ public class PageController {
 		System.out.println("Static output inside method: "+terminalOutput2); 
 		
 		stdInput2.close();
+		
+		
 		
 		}	catch (Exception e) {
 		    e.printStackTrace();		    

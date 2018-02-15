@@ -110,9 +110,10 @@
   </td> 
 		<br>
 		<div class="alert alert-danger">
-  	<strong>Error!</strong> Script failed due to DB connectivity issue. Check with administrator to get more details.
+  	<strong>Error opening database!</strong> ORA-01017: invalid username/password; logon denied (DBD ERROR: OCISessionBegin)
 	</div>
 		
+	
 		
             <script>
           $('#frms').bind('submit', function(e) {

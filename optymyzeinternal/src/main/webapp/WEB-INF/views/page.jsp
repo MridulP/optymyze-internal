@@ -7,6 +7,7 @@
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
+<spring:url var="doc" value="/resources/doc" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
@@ -32,6 +33,10 @@
 
 <!-- Bootstrap Readable Theme -->
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+
+
+
 
 <!-- Custom CSS here -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -97,6 +102,9 @@
 				<%@include file="failScript.jsp"%>
 			</c:if>
 			
+			<c:if test="${userClickpdf == true }">
+				<%@include file="pdfcontent.jsp"%>
+			</c:if>
 		
 		</div>
 
@@ -106,11 +114,25 @@
 
 		<!-- /.container -->
 
+  
+  
+  
+
 		<!-- JavaScript -->
 		
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.js"></script>
+		
+	<script src="${js}/jquery.min.js"></script>
+	<script src="${js}/bootstrap.min.js"></script>
+	
+    <script src="${js}/moment.min.js"></script>
+    <script src="${js}/moment.js"></script>   
+    <script src="${js}/bootstrap-datetimepicker.min.js"></script>
+	
+	
 
+	
 		<!-- Self coded JavaScript -->
 		<script src="${js}/myapp.js"></script>
 	<script src="${js}/jquery-ui.js"></script>
