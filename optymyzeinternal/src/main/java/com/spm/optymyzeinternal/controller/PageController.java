@@ -150,8 +150,8 @@ public class PageController {
 	@RequestMapping(value = { "/download" })
 	public void downloadResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		    File file = new File("c:\\eclipse\\" + projInput2);
-		//File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
+		    //File file = new File("c:\\eclipse\\" + projInput2);
+		   File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
 		
 		// String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
 

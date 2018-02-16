@@ -58,13 +58,13 @@ public class CreateBatch {
 	     System.out.println("Value of project during move"+projInput1);
 	     Date date = new Date();
 	  	     
-	         File f = new File("C:\\eclipse\\"+projInput1); 
-	     	//File f = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput1); 
+	        // File f = new File("C:\\eclipse\\"+projInput1); 
+	     	File f = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput1); 
 	     
 	            while(f.exists()) {     
 
-	             //  f.renameTo(new File("e:\\Concurrent_user_session\\"+fileName + "_"+version+".html"));
-	               f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
+	               f.renameTo(new File("e:\\Concurrent_user_session\\"+fileName + "_"+version+".html"));
+	             //  f.renameTo(new File("c:\\perl\\"+fileName + "_"+version+".html"));
 	               version++;	                
 	            }
 	            System.out.println("File moved and version incremented sucessfully"); 
@@ -78,7 +78,9 @@ public class CreateBatch {
 	
 	public void delete(long days, String fileExtension){
 		
-		String dirPath = "c:\\perl";
+		//String dirPath = "c:\\perl";
+		String dirPath = "e:\\Concurrent_user_session";
+		
 		File folder = new File(dirPath);
 		
 		if (folder.exists()) {
