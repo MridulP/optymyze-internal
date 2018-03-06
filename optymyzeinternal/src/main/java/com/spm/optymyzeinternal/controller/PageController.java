@@ -24,6 +24,7 @@ import java.util.logging.FileHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -100,7 +101,8 @@ public class PageController {
 	
 	public static String projInput2;
 	@RequestMapping(value = { "/runBatch" }, method = RequestMethod.POST)
-	public ModelAndView actionRun(@RequestParam("projInput") String projInput, 
+	public ModelAndView actionRun(@RequestParam("projName") String projName, 
+																	  @RequestParam("projInput") String projInput, 
 																	  @RequestParam("dbInput") String dbInput,
 																	  @RequestParam("userid") String userid, 
 																	  @RequestParam("password") String password,
@@ -109,7 +111,7 @@ public class PageController {
 																	  throws FileNotFoundException, InterruptedException, ParseException {
 
 		
-		projInput2=projInput;
+		projInput2=projName;
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "runBatch");
 		mv.addObject("button3", true);
@@ -126,7 +128,7 @@ public class PageController {
 		// Call method to create batch file
 
 		CreateBatch obj = new CreateBatch();
-		obj.createScript(projInput, dbInput, userid, password, targetStart, endStart);
+		obj.createScript(projName,projInput, dbInput, userid, password, targetStart, endStart);
 
 		// Call method to run batch file
 
@@ -150,14 +152,14 @@ public class PageController {
 	@RequestMapping(value = { "/download" })
 	public void downloadResource(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		    //File file = new File("c:\\eclipse\\" + projInput2);
-		   File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
+		//File file = new File("c:\\eclipse\\" + projInput2);
+		File file = new File("c:\\Tomcat_OptymyzeInternal-Support\\" + projInput2);
 		
 		// String filePath = "C:\\Tomcat_OptymyzeInternal-Support\\";
 
 		response.setContentType("text/html");
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + ".html" + "\"");
-		// "\""
+		
 		PrintWriter out = response.getWriter();
 		FileInputStream fileInputStream = new FileInputStream(file);
 		try {
@@ -230,6 +232,12 @@ public class PageController {
 
 			p.waitFor();
 			p.destroy();
+			
+			Process p4 = Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+			System.out.println("Inside Killing CMD Concurrent session"); 
+			p4.waitFor(); 
+			p4.destroy();
+			
 
 			//Thread.sleep(10000);		
 			
@@ -365,6 +373,17 @@ public class PageController {
 		System.out.println("Static output inside method: "+terminalOutput2); 
 		
 		stdInput2.close();
+		
+		Process p3 = Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+		System.out.println("Inside Killing CMD"); 
+		p3.waitFor(); 
+		p3.destroy();
+		
+		File file = new File ("C:\\perl\\upload\\");
+		System.out.println("Proceeding to delete uploaded file during processing"); 
+		
+		FileUtils.cleanDirectory(file); 
+		
 		
 		
 		

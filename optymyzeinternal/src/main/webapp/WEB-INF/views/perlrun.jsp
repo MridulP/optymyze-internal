@@ -42,6 +42,16 @@
 			<form action="${pageContext.request.contextPath}/runBatch"
 				method="post" id="frm">
 
+				
+					<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cloud"></i></span> <input type="text"
+						name="projName" class="form-control" placeholder="Project Name"
+						required="required" />
+				</div>
+				<br>
+
+
 				<div class="input-group">
 					<span class="input-group-addon"><i
 						class="glyphicon glyphicon-cloud"></i></span> <input type="text"
@@ -116,6 +126,7 @@
             <input type="text" name="endDate_picker" id="endDate_picker" value="" class="form-control" placeholder="Select end date" required="required"> 
         
     </div>
+     
 </div>
 
 <br><br><br><br><br>
@@ -124,18 +135,13 @@
 
 			
 			<script>
-			$('#startDate_picker,#endDate_picker').datetimepicker(); 
-			</script> 
- 						
-
-
-						
+	//		$('#startDate_picker').datetimepicker(); 
+			
+	//	   	$('#endDate_picker').datetimepicker(); 
+			
 				
-					
-					
-					
-					
-					
+			</script> 
+ 														
 					
 					
 					 <input
@@ -168,24 +174,27 @@
 			<br>
 
 		<script>
-		$(document).ready(function(){
+		
 
 		    $("#startDate_picker").datetimepicker({
-		        onSelect: function(selected) {
-		          $("#endDate_picker").datetimepicker("option","minDate", selected)
-		        }
+		      		onSelect: function(selected){
+		      		$("#endDate_picker").datepicker( "option", "minDate", selected);
+		      			
+		      		}
+		
 		    });
 
 		    $("#endDate_picker").datetimepicker({		        
-		        onSelect: function(selected) {
-		    //       $("#startDate_picker").datepicker("option","maxDate", selected)
-		        }
+		   	onSelect: function( selected) {
+		   		$("#startDate_picker").datepicker( "option", "maxDate", selected);
+		    		}
 		    }); 
-		});
+	
 		</script>
 
+
 			<script>
-				$(document).ready(function() {
+			/*		$(document).ready(function() {
 					$("#endDate_picker").datetimepicker({
 						"altField2" : "endDate_picker",
 					//	"dateFormat" : "mm/dd/yy",
@@ -194,13 +203,13 @@
 						"changeMonth" : true,
 						"changeYear" : true
 					});
-				});
+				}); */
 			</script>
 
 		</div>
 
 		<script>
-			$(document).ready(function() {
+		/*			$(document).ready(function() {
 				$("#startDate_picker").datepicker({
 					"altField" : "startDate_picker",
 					"dateFormat" : "mm/dd/yy",
@@ -208,7 +217,7 @@
 					"changeMonth" : true,
 					"changeYear" : true
 				});
-			});
+			}); */
 		</script>
 
  

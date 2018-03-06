@@ -20,7 +20,7 @@ public class FileUpload {
 	
 	
 	public void uploadHandler(MultipartFile file){
-		String UPLOADED_FOLDER = "C:\\perl\\";
+		String UPLOADED_FOLDER = "C:\\perl\\upload\\";
 		if (!file.isEmpty()) {
 			try {
 				

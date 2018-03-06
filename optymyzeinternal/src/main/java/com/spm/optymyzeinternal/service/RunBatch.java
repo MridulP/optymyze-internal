@@ -28,12 +28,15 @@ public void runScript() throws InterruptedException{
 	
 	try {
 			String  [] command = { "cmd.exe", "/C", "Start", "C:\\Perl\\test.bat" };
+			
 			Runtime r = Runtime.getRuntime();
             Process p = r.exec(command);
             p.waitFor();
             p.destroy();
            
             Thread.sleep(10000);
+            
+       
             
             } catch (Exception e) 
             {

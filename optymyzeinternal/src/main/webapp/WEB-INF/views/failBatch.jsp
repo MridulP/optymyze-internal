@@ -14,7 +14,13 @@
       <h2>Perl Script Input:</h2>
       <br>
 
-
+			<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-cloud"></i></span> <input type="text" disabled
+						name="projName" class="form-control" placeholder="Project Name"
+						required="required" />
+				</div>
+				<br>
 
         <div class="input-group">
           <span class="input-group-addon"><i
