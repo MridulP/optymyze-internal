@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 import java.util.logging.FileHandler;
@@ -28,6 +29,11 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,16 +49,78 @@ import com.spm.optymyzeinternal.service.CreateBatch;
 import com.spm.optymyzeinternal.service.FileUpload;
 import com.spm.optymyzeinternal.service.RunBatch;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class PageController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 
-	@RequestMapping(value = { "/", "/home", "/index" })
+	@RequestMapping(value = { "/", "/login" }, method =RequestMethod.GET)
+	 public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error) {
+			 
+			ModelAndView model = new ModelAndView("page");
+			model.addObject("title", "login");
+			model.addObject("userClickLogin", true);
+		
+			if (error != null) {
+			 
+				 model.addObject("error", "Invalid username and password!");
+			 }
+			 return model;
+			} 
+	
+	
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	 public String logoutPage (ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	 if (auth != null){ 
+	 new SecurityContextLogoutHandler().logout(request, response, auth);
+	 }
+	 model.addAttribute("msg", "You've been logged out successfully.");
+	 return "login";
+	 }
+	
+	
+	@RequestMapping(value = "/access_Denied", method = RequestMethod.GET)
+	 public String accessDeniedPage(ModelMap model) {
+	 model.addAttribute("user", getPrincipal());
+	 return "accessDenied";
+	 }
+	
+	
+	private String getPrincipal(){
+		 String userName = null;
+		 Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 if (principal instanceof UserDetails) {
+		 userName = ((UserDetails)principal).getUsername();
+		 } else {
+		 userName = principal.toString();
+		 }
+		 return userName;
+		 }
+		
+	
+	
+	@RequestMapping(value = { "/home", "/index" })
 	public ModelAndView index() {
 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "home");
+		
+		// Get the roles if needed
+		@SuppressWarnings("unchecked")
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) auth.getAuthorities();
+		
+	    mv.addObject("username", username);
 
 		logger.info("Inside PageController index method - INFO");
 		logger.debug("Inside PageController index method - DEBUG");
@@ -100,7 +168,7 @@ public class PageController {
 
 	
 	public static String projInput2;
-	@RequestMapping(value = { "/runBatch" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/runBatch" }, method = RequestMethod.GET)
 	public ModelAndView actionRun(@RequestParam("projName") String projName, 
 																	  @RequestParam("projInput") String projInput, 
 																	  @RequestParam("dbInput") String dbInput,
@@ -390,9 +458,10 @@ public class PageController {
 		}	catch (Exception e) {
 		    e.printStackTrace();		    
 		}
-        
-        
-	
-	
+        	
 }
+	
+	
+
+	
 }

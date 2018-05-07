@@ -10,10 +10,10 @@
 		<div class="jumbotron">
 			<h2>Detect Character encoding:</h2> <br>
 			
-			<form  method=POST action="uploadSuccess" method="POST" enctype="multipart/form-data"> <br>
+			<form action="uploadSuccess?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data"> <br>
 
 				
-		<h4>File to upload:  <br><input type="file" name="file"  required="required" id=uploadelement style=" color: #fff;background-color: #428bca;border-color: #357ebd;  display: inline-block;
+ <h4>File to upload:  <br><input type="file" name="file"  required="required" id=uploadelement style=" color: #fff;background-color: #428bca;border-color: #357ebd;  display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
@@ -34,6 +34,8 @@
  			
 	
 		<input type="submit" name="button13" id=button13  value="Upload" class="btn btn-primary" onclick="Upload_click()"> Press here to upload the file! </h4>
+		
+		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 		
 			</form>	  
 			

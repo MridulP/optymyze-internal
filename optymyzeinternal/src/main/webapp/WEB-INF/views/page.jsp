@@ -105,6 +105,12 @@
 			<c:if test="${userClickpdf == true }">
 				<%@include file="pdfcontent.jsp"%>
 			</c:if>
+			
+			
+			
+		   <c:if test="${userClickLogin == true }">
+				<%@include file="login.jsp"%>
+			</c:if>
 		
 		</div>
 

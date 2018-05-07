@@ -40,7 +40,7 @@
 			<br>
 
 			<form action="${pageContext.request.contextPath}/runBatch"
-				method="post" id="frm">
+				method="get" id="frm">
 
 				
 					<div class="input-group">

@@ -1,7 +1,9 @@
+
 <beans xmlns = "http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:sec="http://www.springframework.org/schema/security"
    xsi:schemaLocation = "
    http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -9,10 +11,11 @@
    http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
- ">
+   http://www.springframework.org/schema/security 
+   http://www.springframework.org/schema/security/spring-security.xsd">
+ 
    
    <context:component-scan base-package="com.spm.optymyzeinternal.controller"/>
-   
    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    	
    	<property name="prefix" value="/WEB-INF/views/"/>
@@ -23,21 +26,25 @@
    	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
-
 	<!-- setting maximum upload size -->
 	
 		<property name="maxUploadSize" value="400000000" />
 
 	</bean>
-   	
-   	
+   	   	
    	<!-- Loading static resources -->
    	
    	<mvc:annotation-driven/>
-   	
-   	 <mvc:default-servlet-handler/>
-   	
+   	<mvc:default-servlet-handler/>
    	<mvc:resources location="/assets/" mapping="/resources/**"/>
+ 
+ 
+  
+ 
+ <!-- Begin Web Security -->
+	<import resource="spring-security.xml" />
+	
+	<!--  end Web Security -->
    	   	
    	
 </beans>   

@@ -1,0 +1,52 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+
+	<http auto-config="true" create-session="always" use-expressions="true" >
+				
+	 <intercept-url pattern="/login" access="permitAll" /> 
+		<intercept-url pattern="/logout" access="permitAll" />
+		<!--	<intercept-url pattern="/home" access="permitAll" />  -->
+		<intercept-url pattern="/**" access="permitAll" />
+		
+		 <intercept-url pattern="/uploadSuccess" access="permitAll" />
+		 <intercept-url pattern="/home" access="permitAll" />
+	 
+		<!--  <form-login login-page='/login' default-target-url='/home' always-use-default-target='true' /> -->
+		
+		<session-management invalid-session-url="/login.do?login_error=session_expired" session-fixation-protection="migrateSession" >
+		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+		</session-management> 		
+		
+		<logout logout-success-url="/login?logout" />
+		
+		<http-basic />
+
+		<!-- access denied page -->
+		<access-denied-handler error-page="/access_Denied" />
+		<form-login login-page="/login" login-processing-url="/login"
+			default-target-url="/home" username-parameter="username"
+			password-parameter="password" authentication-failure-url="/login?error" />
+
+	</http>
+
+<authentication-manager>
+		<ldap-authentication-provider
+			user-search-filter="(sAMAccountName={0})" user-search-base="dc=synygy,dc=net"
+			group-search-filter="(uniqueMember={0})" group-search-base="CN=OZ-Support,OU=Distribution Lists,OU=Groups,OU=Users,OU=Synygy,DC=synygy,DC=net"
+			group-role-attribute="cn" role-prefix="ROLE_">
+		</ldap-authentication-provider>
+	</authentication-manager>
+
+	<!-- LDAP Server connection -->
+	<ldap-server url="ldap://v-chs-dom-01.synygy.net/" port="389"
+		manager-dn="CN=svcOptymyzeSD,OU=SvcAccounts,OU=HiddenObjects,OU=Synygy,DC=synygy,DC=net" manager-password="Opt4m4z3" />
+
+
+
+</beans:beans>
